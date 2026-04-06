@@ -175,45 +175,64 @@ body{font-family:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sa
   </div>
 </div>
 
-<script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
-import { getFirestore, doc, setDoc, onSnapshot }
-  from "https://www.gstatic.com/firebasejs/11.6.0/firebase-firestore.js";
+<script>
+/* ═══════════════════════════════════════
+   JSONBIN CONFIG
+   ─ Paste your values from jsonbin.io
+   ═══════════════════════════════════════ */
+const BIN_ID    = "69d3a0ebaaba882197cc4c36";
+const MASTER_KEY = "$2a$10$uO8xNvp0fL078nDV79Q1buDfDkYCSR48.GxhU3kRW9a.OMKqdqMkS";
 
-const PIN = "1975";
-
-const firebaseConfig = {
-  apiKey:            "AIzaSyBX4pEWBoOSEHYlvYVtUsXtglJYiTeG3Oo",
-  authDomain:        "sub-teacher-kl.firebaseapp.com",
-  projectId:         "sub-teacher-kl",
-  storageBucket:     "sub-teacher-kl.firebasestorage.app",
-  messagingSenderId: "197970168959",
-  appId:             "1:197970168959:web:98a60b1933cb36b55a834a"
-};
-
-const db     = getFirestore(initializeApp(firebaseConfig));
-const dayDoc = doc(db, "availability", "days"); // ONE document stores everything
+/* ═══════════════════════════════════════
+   APP — no need to edit below
+   ═══════════════════════════════════════ */
+const PIN     = "1975";
+const LS      = "kl_avail_v3";
+const API     = `https://api.jsonbin.io/v3/b/${BIN_ID}`;
+const HEADERS = { "Content-Type": "application/json", "X-Master-Key": MASTER_KEY };
 
 let editMode = false;
 let pinInput = "";
 let avail    = {};
 
-// ── localStorage: instant read/write ──────────────────────
-const LS = "kl_avail_v2";
-function fromCache()    { try { return JSON.parse(localStorage.getItem(LS)||"{}"); } catch(e){ return {}; } }
-function toCache(data)  { try { localStorage.setItem(LS, JSON.stringify(data)); }   catch(e){} }
+// localStorage: instant read/write
+function fromCache()   { try { return JSON.parse(localStorage.getItem(LS)||"{}"); } catch(e){ return {}; } }
+function toCache(d)    { try { localStorage.setItem(LS, JSON.stringify(d)); } catch(e){} }
 
-// ── Sync dot ───────────────────────────────────────────────
+// Sync dot
 function dot(state) {
-  document.getElementById("syncDot").className = "sync-dot" + (state ? " "+state : "");
-  if (state === "saved") setTimeout(()=>dot(""), 2000);
+  document.getElementById("syncDot").className = "sync-dot" + (state?" "+state:"");
+  if (state==="saved") setTimeout(()=>dot(""), 2000);
 }
 
-// ── Save to Firebase (single document write) ───────────────
-async function save() {
+// Load from JSONBin
+async function loadFromCloud() {
+  try {
+    const r = await fetch(API+"/latest", { headers: { "X-Master-Key": MASTER_KEY } });
+    if (!r.ok) throw new Error("Load failed: "+r.status);
+    const data = await r.json();
+    const remote = data.record || {};
+    if (JSON.stringify(remote) !== JSON.stringify(avail)) {
+      avail = remote;
+      toCache(avail);
+      renderCalendar();
+    }
+  } catch(e) {
+    console.warn("Cloud load error:", e);
+    dot("error");
+  }
+}
+
+// Save to JSONBin (overwrites the whole bin with current avail)
+async function saveToCloud() {
   dot("saving");
   try {
-    await setDoc(dayDoc, { days: avail });
+    const r = await fetch(API, {
+      method: "PUT",
+      headers: HEADERS,
+      body: JSON.stringify(avail)
+    });
+    if (!r.ok) throw new Error("Save failed: "+r.status);
     toCache(avail);
     dot("saved");
   } catch(e) {
@@ -222,93 +241,66 @@ async function save() {
   }
 }
 
-// ── Realtime listener ──────────────────────────────────────
-// Fires immediately with cached data if offline, then syncs
-function startSync() {
-  onSnapshot(dayDoc,
-    snap => {
-      if (!snap.exists()) return;
-      const remote = snap.data().days || {};
-      if (JSON.stringify(remote) !== JSON.stringify(avail)) {
-        avail = remote;
-        toCache(avail);
-        renderCalendar();
-      }
-    },
-    err => { console.warn("Sync error:", err); dot("error"); }
-  );
-}
-
-// ── Helpers ────────────────────────────────────────────────
+// Helpers
 const pad    = n => String(n).padStart(2,"0");
 const key    = d => `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`;
-const isWknd = d => d.getDay()===0 || d.getDay()===6;
-
+const isWknd = d => d.getDay()===0||d.getDay()===6;
 function get30Days() {
   const t = new Date(); t.setHours(0,0,0,0);
-  return Array.from({length:30}, (_,i) => { const d=new Date(t); d.setDate(t.getDate()+i); return d; });
+  return Array.from({length:30},(_,i)=>{ const d=new Date(t); d.setDate(t.getDate()+i); return d; });
 }
 
-// ── Render calendar ────────────────────────────────────────
 function renderCalendar() {
   const days = get30Days();
   const tk   = key(new Date());
-
-  const av = Object.values(avail).filter(v=>v==="available").length;
-  const bk = Object.values(avail).filter(v=>v==="booked").length;
+  const av   = Object.values(avail).filter(v=>v==="available").length;
+  const bk   = Object.values(avail).filter(v=>v==="booked").length;
   document.getElementById("summary").innerHTML =
     `<div class="chip chip-g">${av} available</div><div class="chip chip-r">${bk} booked</div>`;
 
-  const fdow   = days[0].getDay();
-  const blanks = fdow===0 ? 6 : fdow-1;
-  const grid   = document.getElementById("calGrid");
+  const fdow = days[0].getDay();
+  const grid = document.getElementById("calGrid");
   grid.innerHTML = "";
 
-  const BG   = {available:"#dcfce7", booked:"#fee2e2", unset:"#f1f5f9", weekend:"#f8fafc"};
-  const TXT  = {available:"#15803d", booked:"#b91c1c", unset:"#94a3b8", weekend:"#cbd5e1"};
-  const SYM  = {available:"✓",       booked:"✗",       unset:null,       weekend:null};
-  const BDR  = {available:"#86efac", booked:"#fca5a5", unset:"#e2e8f0",  weekend:"#f1f5f9"};
-  const BDR2 = {available:"#16a34a", booked:"#dc2626", unset:"#93c5fd",  weekend:"#f1f5f9"};
+  const BG   = {available:"#dcfce7",booked:"#fee2e2",unset:"#f1f5f9",weekend:"#f8fafc"};
+  const TXT  = {available:"#15803d",booked:"#b91c1c",unset:"#94a3b8",weekend:"#cbd5e1"};
+  const SYM  = {available:"✓",booked:"✗",unset:null,weekend:null};
+  const BDR  = {available:"#86efac",booked:"#fca5a5",unset:"#e2e8f0",weekend:"#f1f5f9"};
+  const BDR2 = {available:"#16a34a",booked:"#dc2626",unset:"#93c5fd",weekend:"#f1f5f9"};
 
-  [...Array(blanks).fill(null), ...days].forEach(date => {
+  const blanks = fdow===0?6:fdow-1;
+  [...Array(blanks).fill(null),...days].forEach(date => {
     const div = document.createElement("div");
     div.className = "cell";
     if (!date) { grid.appendChild(div); return; }
-
     const k    = key(date);
     const wknd = isWknd(date);
-    const s    = wknd ? "weekend" : (avail[k]||"unset");
+    const s    = wknd?"weekend":(avail[k]||"unset");
     const isT  = k===tk;
-
     div.style.cssText = `background:${BG[s]};opacity:${wknd?.4:1};border:${isT?`2px solid ${BDR2[s]}`:`1px solid ${BDR[s]}`}`;
-    if (editMode && !wknd) div.classList.add("editable");
-
+    if (editMode&&!wknd) div.classList.add("editable");
     let html = `<div class="cell-num" style="color:${TXT[s]};font-weight:${isT?700:400}">${date.getDate()}</div>`;
     if (SYM[s]) html += `<div class="cell-sym" style="color:${TXT[s]}">${SYM[s]}</div>`;
     else if (isT) html += `<div class="cell-dot"></div>`;
     div.innerHTML = html;
-
     if (!wknd) div.onclick = async () => {
       if (!editMode) return;
       const next = {unset:"available",available:"booked",booked:"unset"}[avail[k]||"unset"];
       if (next==="unset") delete avail[k]; else avail[k]=next;
-      renderCalendar(); // instant UI update
-      await save();     // then write to Firebase
+      renderCalendar();      // instant UI
+      await saveToCloud();   // persist
     };
-
     grid.appendChild(div);
   });
 }
 
-// ── Tabs ───────────────────────────────────────────────────
 window.switchTab = t => {
-  ["calendar","about"].forEach(id => {
-    document.getElementById("view-"+id).style.display = id===t?"":"none";
-    document.getElementById("tab-"+id).classList.toggle("active", id===t);
+  ["calendar","about"].forEach(id=>{
+    document.getElementById("view-"+id).style.display=id===t?"":"none";
+    document.getElementById("tab-"+id).classList.toggle("active",id===t);
   });
 };
 
-// ── Edit / PIN ─────────────────────────────────────────────
 window.toggleEdit = () => {
   if (editMode) {
     editMode=false;
@@ -329,9 +321,8 @@ window.pinDigit = d => {
   if (pinInput.length===4) checkPin();
 };
 window.pinDel = () => { pinInput=pinInput.slice(0,-1); dots(); };
-
 function dots(err) {
-  for (let i=0;i<4;i++) {
+  for(let i=0;i<4;i++){
     const el=document.getElementById("d"+i);
     el.className="pin-dot"+(err?" error":i<pinInput.length?" filled":"");
   }
@@ -345,16 +336,14 @@ function checkPin() {
   } else {
     dots(true);
     document.getElementById("pinErr").textContent="Incorrect PIN — try again";
-    setTimeout(()=>{ pinInput=""; dots(); document.getElementById("pinErr").innerHTML="&nbsp;"; }, 700);
+    setTimeout(()=>{ pinInput=""; dots(); document.getElementById("pinErr").innerHTML="&nbsp;"; },700);
   }
 }
 
-// ── BOOT ───────────────────────────────────────────────────
-// Step 1: paint calendar from localStorage — ZERO network wait
+// BOOT: show cache instantly, then fetch latest from cloud
 avail = fromCache();
 renderCalendar();
-// Step 2: connect Firebase in background, update if anything changed
-startSync();
+loadFromCloud();
 </script>
 </body>
 </html>

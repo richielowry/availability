@@ -9,11 +9,13 @@
 html,body{height:100%;-webkit-tap-highlight-color:transparent}
 body{font-family:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#f8fafc;color:#0f172a}
 #app{max-width:480px;margin:0 auto;background:#fff;min-height:100vh;display:flex;flex-direction:column;position:relative;overflow:hidden}
-.header{background:#1e3a8a;padding:18px 16px 14px;position:relative;flex-shrink:0}
-.header-name{font-size:19px;font-weight:600;color:#fff;letter-spacing:-.3px}
-.header-title{font-size:12px;color:rgba(255,255,255,.8);margin-top:3px}
-.edit-btn{position:absolute;top:16px;right:14px;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.3);color:#fff;border-radius:8px;padding:6px 12px;font-size:12px;cursor:pointer;font-weight:500;font-family:inherit}
-.sync-dot{position:absolute;top:18px;right:72px;width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.3);transition:background .4s}
+.header{background:#1e3a8a;padding:14px 16px;position:relative;flex-shrink:0}
+.header-inner{display:flex;align-items:center;gap:11px;padding-right:90px}
+.header-avatar{height:52px;width:52px;object-fit:cover;object-position:top;border-radius:50%;flex-shrink:0;border:2px solid rgba(255,255,255,.35)}
+.header-name{font-size:18px;font-weight:600;color:#fff;letter-spacing:-.3px}
+.header-title{font-size:11px;color:rgba(255,255,255,.8);margin-top:3px}
+.edit-btn{position:absolute;top:50%;right:14px;transform:translateY(-50%);background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.3);color:#fff;border-radius:8px;padding:6px 12px;font-size:12px;cursor:pointer;font-weight:500;font-family:inherit}
+.sync-dot{position:absolute;top:50%;right:72px;transform:translateY(-50%);width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.3);transition:background .4s}
 .sync-dot.saving{background:#fde047}
 .sync-dot.saved{background:#86efac}
 .sync-dot.error{background:#f87171}
@@ -82,19 +84,23 @@ body{font-family:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sa
 <div id="app">
 
   <div class="header">
-    <div class="header-name">Karen Lowry</div>
-    <div class="header-title">Primary School Substitute Teacher</div>
+    <div class="header-inner">
+      <img class="header-avatar" src="data:image/png;base64,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" alt="Karen Lowry">
+      <div>
+        <div class="header-name">Karen Lowry</div>
+        <div class="header-title">Primary School Substitute Teacher</div>
+      </div>
+    </div>
     <div class="sync-dot" id="syncDot"></div>
     <button class="edit-btn" id="editBtn" onclick="toggleEdit()">Edit</button>
   </div>
-  <div class="edit-bar" id="editBar">&#9999; Edit mode — tap any weekday to update your availability</div>
+  <div class="edit-bar" id="editBar">&#9999; Edit mode &#8212; tap any weekday to update your availability</div>
 
   <div class="tabs">
     <button class="tab-btn active" id="tab-calendar" onclick="switchTab('calendar')">Calendar</button>
     <button class="tab-btn" id="tab-about" onclick="switchTab('about')">About Me</button>
   </div>
 
-  <!-- Calendar view -->
   <div class="cal-wrap" id="view-calendar">
     <div class="summary" id="summary"></div>
     <div class="col-headers">
@@ -113,23 +119,17 @@ body{font-family:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sa
     <div class="cal-contact">
       <div class="contact-card">
         <a class="contact-row" href="tel:0876122597">
-          <div class="c-icon c-icon-g">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#15803d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.62 3.38a2 2 0 0 1 2-1.87h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-          </div>
+          <div class="c-icon c-icon-g"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#15803d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.62 3.38a2 2 0 0 1 2-1.87h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
           <div><div class="c-label">087 612 2597</div><div class="c-hint">Tap to call</div></div>
           <div class="c-arr">&#8250;</div>
         </a>
         <a class="contact-row" href="mailto:karen.lowry80@gmail.com">
-          <div class="c-icon c-icon-b">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-          </div>
+          <div class="c-icon c-icon-b"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
           <div><div class="c-label">karen.lowry80@gmail.com</div><div class="c-hint">Tap to email</div></div>
           <div class="c-arr">&#8250;</div>
         </a>
         <a class="contact-row" href="https://wa.me/353876122597">
-          <div class="c-icon c-icon-w">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-          </div>
+          <div class="c-icon c-icon-w"><svg width="16" height="16" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></div>
           <div><div class="c-label">WhatsApp</div><div class="c-hint">Tap to message</div></div>
           <div class="c-arr">&#8250;</div>
         </a>
@@ -137,7 +137,6 @@ body{font-family:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sa
     </div>
   </div>
 
-  <!-- About view -->
   <div class="about-wrap" id="view-about" style="display:none">
     <div class="avatar">KL</div>
     <div class="about-name">Karen Lowry</div>
@@ -146,23 +145,17 @@ body{font-family:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sa
     <div class="about-contact">
       <div class="contact-card">
         <a class="contact-row" href="tel:0876122597">
-          <div class="c-icon c-icon-g">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#15803d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.62 3.38a2 2 0 0 1 2-1.87h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-          </div>
+          <div class="c-icon c-icon-g"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#15803d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.62 3.38a2 2 0 0 1 2-1.87h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
           <div><div class="c-label">087 612 2597</div><div class="c-hint">Tap to call</div></div>
           <div class="c-arr">&#8250;</div>
         </a>
         <a class="contact-row" href="mailto:karen.lowry80@gmail.com">
-          <div class="c-icon c-icon-b">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-          </div>
+          <div class="c-icon c-icon-b"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
           <div><div class="c-label">karen.lowry80@gmail.com</div><div class="c-hint">Tap to email</div></div>
           <div class="c-arr">&#8250;</div>
         </a>
         <a class="contact-row" href="https://wa.me/353876122597">
-          <div class="c-icon c-icon-w">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-          </div>
+          <div class="c-icon c-icon-w"><svg width="16" height="16" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></div>
           <div><div class="c-label">WhatsApp</div><div class="c-hint">Tap to message</div></div>
           <div class="c-arr">&#8250;</div>
         </a>
@@ -180,7 +173,6 @@ body{font-family:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sa
     </div>
   </div>
 
-  <!-- PIN overlay -->
   <div class="overlay" id="pinOverlay" onclick="if(event.target===this)closePinSheet()">
     <div class="pin-sheet">
       <div class="pin-title">Enter your PIN</div>
@@ -228,26 +220,21 @@ function fromCache() {
 function toCache(d) {
   try { localStorage.setItem(LS, JSON.stringify(d)); } catch(e) {}
 }
-
 function dot(state) {
   document.getElementById("syncDot").className = "sync-dot" + (state ? " " + state : "");
   if (state === "saved") setTimeout(function() { dot(""); }, 2000);
 }
-
 function loadFromCloud() {
   fetch(API + "/latest", { headers: { "X-Master-Key": MASTER_KEY } })
     .then(function(r) { if (!r.ok) throw new Error(r.status); return r.json(); })
     .then(function(data) {
       var remote = data.record || {};
       if (JSON.stringify(remote) !== JSON.stringify(avail)) {
-        avail = remote;
-        toCache(avail);
-        renderCalendar();
+        avail = remote; toCache(avail); renderCalendar();
       }
     })
     .catch(function(e) { console.warn("Load error:", e); dot("error"); });
 }
-
 function saveToCloud() {
   dot("saving");
   fetch(API, {
@@ -258,175 +245,103 @@ function saveToCloud() {
     .then(function(r) { if (!r.ok) throw new Error(r.status); toCache(avail); dot("saved"); })
     .catch(function(e) { console.error("Save error:", e); dot("error"); });
 }
-
 function pad(n) { return String(n).padStart(2, "0"); }
-function dateKey(d) {
-  return d.getFullYear() + "-" + pad(d.getMonth() + 1) + "-" + pad(d.getDate());
-}
-
-/*
-  Rolling block start: Monday of the current week.
-  On Saturday or Sunday the week is over — jump to next Monday
-  so the block automatically rolls forward by one week.
-*/
+function dateKey(d) { return d.getFullYear() + "-" + pad(d.getMonth()+1) + "-" + pad(d.getDate()); }
 function getBlockStart() {
-  var d = new Date();
-  d.setHours(0, 0, 0, 0);
+  var d = new Date(); d.setHours(0,0,0,0);
   var dow = d.getDay();
-  if (dow === 6) { d.setDate(d.getDate() + 2); }  // Sat → Mon+2
-  else if (dow === 0) { d.setDate(d.getDate() + 1); } // Sun → Mon+1
+  if (dow === 6) { d.setDate(d.getDate() + 2); }
+  else if (dow === 0) { d.setDate(d.getDate() + 1); }
   dow = d.getDay();
-  d.setDate(d.getDate() - (dow - 1));              // back to Monday
+  d.setDate(d.getDate() - (dow - 1));
   return d;
 }
-
-/* 7 weeks × 5 weekdays = 35 dates */
 function getWeekDays() {
-  var mon = getBlockStart();
-  var days = [];
-  for (var w = 0; w < 7; w++) {
+  var mon = getBlockStart(); var days = [];
+  for (var w = 0; w < 5; w++) {
     for (var d = 0; d < 5; d++) {
-      var date = new Date(mon);
-      date.setDate(mon.getDate() + w * 7 + d);
-      days.push(date);
+      var date = new Date(mon); date.setDate(mon.getDate() + w*7 + d); days.push(date);
     }
   }
   return days;
 }
-
 function renderCalendar() {
-  var days = getWeekDays();
-  var tk   = dateKey(new Date());
-
+  var days = getWeekDays(); var tk = dateKey(new Date());
   var av = 0, bk = 0;
-  for (var k in avail) {
-    if (avail[k] === "available") av++;
-    if (avail[k] === "booked")    bk++;
-  }
+  for (var k in avail) { if (avail[k]==="available") av++; if (avail[k]==="booked") bk++; }
   document.getElementById("summary").innerHTML =
-    '<div class="chip chip-g">' + av + ' available</div>' +
-    '<div class="chip chip-r">' + bk + ' booked</div>';
-
-  var BG   = { available: "#dcfce7", booked: "#fee2e2", unset: "#f1f5f9" };
-  var TXT  = { available: "#15803d", booked: "#b91c1c", unset: "#94a3b8" };
-  var SYM  = { available: "&#10003;", booked: "&#10007;", unset: "" };
-  var BDR  = { available: "#86efac", booked: "#fca5a5", unset: "#e2e8f0" };
-  var BDR2 = { available: "#16a34a", booked: "#dc2626", unset: "#93c5fd" };
-
-  var grid = document.getElementById("calGrid");
-  grid.innerHTML = "";
-
+    '<div class="chip chip-g">'+av+' available</div><div class="chip chip-r">'+bk+' booked</div>';
+  var BG   = {available:"#dcfce7",booked:"#fee2e2",unset:"#f1f5f9"};
+  var TXT  = {available:"#15803d",booked:"#b91c1c",unset:"#94a3b8"};
+  var SYM  = {available:"&#10003;",booked:"&#10007;",unset:""};
+  var BDR  = {available:"#86efac",booked:"#fca5a5",unset:"#e2e8f0"};
+  var BDR2 = {available:"#16a34a",booked:"#dc2626",unset:"#93c5fd"};
+  var grid = document.getElementById("calGrid"); grid.innerHTML = "";
   for (var i = 0; i < days.length; i++) {
     (function(date) {
-      var k   = dateKey(date);
-      var s   = avail[k] || "unset";
-      var isT = k === tk;
-
-      var div = document.createElement("div");
-      div.className        = "cell";
-      div.style.background = BG[s];
-      div.style.border     = isT ? "2px solid " + BDR2[s] : "1px solid " + BDR[s];
+      var k=dateKey(date), s=avail[k]||"unset", isT=k===tk;
+      var div=document.createElement("div"); div.className="cell";
+      div.style.background=BG[s];
+      div.style.border=isT?"2px solid "+BDR2[s]:"1px solid "+BDR[s];
       if (editMode) div.classList.add("editable");
-
-      var numDiv = document.createElement("div");
-      numDiv.className   = "cell-num";
-      numDiv.style.color = TXT[s];
-      numDiv.style.fontWeight = isT ? "700" : "400";
-      numDiv.textContent = String(date.getDate());
-      div.appendChild(numDiv);
-
-      var monDiv = document.createElement("div");
-      monDiv.className   = "cell-mon";
-      monDiv.style.color = TXT[s];
-      monDiv.textContent = MONTHS[date.getMonth()];
-      div.appendChild(monDiv);
-
+      var n=document.createElement("div"); n.className="cell-num";
+      n.style.color=TXT[s]; n.style.fontWeight=isT?"700":"400";
+      n.textContent=String(date.getDate()); div.appendChild(n);
+      var m=document.createElement("div"); m.className="cell-mon";
+      m.style.color=TXT[s]; m.textContent=MONTHS[date.getMonth()]; div.appendChild(m);
       if (SYM[s]) {
-        var symDiv = document.createElement("div");
-        symDiv.className   = "cell-sym";
-        symDiv.style.color = TXT[s];
-        symDiv.innerHTML   = SYM[s];
-        div.appendChild(symDiv);
+        var sym=document.createElement("div"); sym.className="cell-sym";
+        sym.style.color=TXT[s]; sym.innerHTML=SYM[s]; div.appendChild(sym);
       }
-
-      div.onclick = function() {
+      div.onclick=function() {
         if (!editMode) return;
-        var cur  = avail[k] || "unset";
-        var next = cur === "unset" ? "available" : cur === "available" ? "booked" : "unset";
-        if (next === "unset") { delete avail[k]; } else { avail[k] = next; }
-        renderCalendar();
-        saveToCloud();
+        var cur=avail[k]||"unset";
+        var next=cur==="unset"?"available":cur==="available"?"booked":"unset";
+        if (next==="unset") { delete avail[k]; } else { avail[k]=next; }
+        renderCalendar(); saveToCloud();
       };
-
       grid.appendChild(div);
     })(days[i]);
   }
 }
-
-window.switchTab = function(t) {
-  document.getElementById("view-calendar").style.display = t === "calendar" ? "" : "none";
-  document.getElementById("view-about").style.display    = t === "about"    ? "" : "none";
-  document.getElementById("tab-calendar").classList.toggle("active", t === "calendar");
-  document.getElementById("tab-about").classList.toggle("active",    t === "about");
+window.switchTab=function(t) {
+  document.getElementById("view-calendar").style.display=t==="calendar"?"":"none";
+  document.getElementById("view-about").style.display=t==="about"?"":"none";
+  document.getElementById("tab-calendar").classList.toggle("active",t==="calendar");
+  document.getElementById("tab-about").classList.toggle("active",t==="about");
 };
-
-window.toggleEdit = function() {
+window.toggleEdit=function() {
   if (editMode) {
-    editMode = false;
-    document.getElementById("editBtn").textContent = "Edit";
-    document.getElementById("editBar").classList.remove("show");
-    renderCalendar();
-  } else {
-    document.getElementById("pinOverlay").classList.add("show");
-  }
+    editMode=false; document.getElementById("editBtn").textContent="Edit";
+    document.getElementById("editBar").classList.remove("show"); renderCalendar();
+  } else { document.getElementById("pinOverlay").classList.add("show"); }
 };
-
-window.closePinSheet = function() {
-  document.getElementById("pinOverlay").classList.remove("show");
-  pinInput = "";
-  updateDots();
+window.closePinSheet=function() {
+  document.getElementById("pinOverlay").classList.remove("show"); pinInput=""; updateDots();
 };
-
-window.pinDigit = function(d) {
-  if (pinInput.length >= 4) return;
-  pinInput += d;
-  updateDots();
-  if (pinInput.length === 4) checkPin();
+window.pinDigit=function(d) {
+  if (pinInput.length>=4) return; pinInput+=d; updateDots();
+  if (pinInput.length===4) checkPin();
 };
-
-window.pinDel = function() { pinInput = pinInput.slice(0, -1); updateDots(); };
-
+window.pinDel=function() { pinInput=pinInput.slice(0,-1); updateDots(); };
 function updateDots(err) {
-  for (var i = 0; i < 4; i++) {
-    var el = document.getElementById("d" + i);
-    el.className = "pin-dot";
-    if (err)                      el.classList.add("error");
-    else if (i < pinInput.length) el.classList.add("filled");
+  for (var i=0;i<4;i++) {
+    var el=document.getElementById("d"+i); el.className="pin-dot";
+    if (err) el.classList.add("error"); else if (i<pinInput.length) el.classList.add("filled");
   }
 }
-
 function checkPin() {
-  if (pinInput === PIN) {
-    editMode = true;
-    document.getElementById("editBtn").textContent = "Done";
+  if (pinInput===PIN) {
+    editMode=true; document.getElementById("editBtn").textContent="Done";
     document.getElementById("editBar").classList.add("show");
-    closePinSheet();
-    renderCalendar();
+    closePinSheet(); renderCalendar();
   } else {
     updateDots(true);
-    document.getElementById("pinErr").textContent = "Incorrect PIN — try again";
-    setTimeout(function() {
-      pinInput = "";
-      updateDots();
-      document.getElementById("pinErr").innerHTML = "&nbsp;";
-    }, 700);
+    document.getElementById("pinErr").textContent="Incorrect PIN — try again";
+    setTimeout(function() { pinInput=""; updateDots(); document.getElementById("pinErr").innerHTML="&nbsp;"; },700);
   }
 }
-
-/* BOOT */
-avail = fromCache();
-renderCalendar();
-loadFromCloud();
+avail=fromCache(); renderCalendar(); loadFromCloud();
 </script>
 </body>
 </html>

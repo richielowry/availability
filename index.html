@@ -36,7 +36,7 @@ body{font-family:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sa
 .cell.editable:active{transform:scale(.91)}
 .cell-num{font-size:15px;line-height:1.1}
 .cell-mon{font-size:9px;line-height:1;opacity:.7;letter-spacing:.02em}
-.cell-sym{font-size:10px;line-height:1}
+.cell-sym{font-size:7px;line-height:1;letter-spacing:.01em;text-transform:uppercase;font-weight:600}
 .legend{display:flex;gap:14px;margin-top:12px;justify-content:center}
 .leg-item{display:flex;align-items:center;gap:5px;font-size:11px}
 .leg-swatch{width:10px;height:10px;border-radius:3px;flex-shrink:0}
@@ -123,9 +123,9 @@ body{font-family:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sa
           <div><div class="c-label">087 612 2597</div><div class="c-hint">Tap to call</div></div>
           <div class="c-arr">&#8250;</div>
         </a>
-        <a class="contact-row" href="mailto:karen.lowry80@gmail.com">
+        <a class="contact-row" href="/cdn-cgi/l/email-protection#117a7063747f3f7d7e666368292151767c70787d3f727e7c">
           <div class="c-icon c-icon-b"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
-          <div><div class="c-label">karen.lowry80@gmail.com</div><div class="c-hint">Tap to email</div></div>
+          <div><div class="c-label"><span class="__cf_email__" data-cfemail="d3b8b2a1b6bdfdbfbca4a1aaebe393b4beb2babffdb0bcbe">[email&#160;protected]</span></div><div class="c-hint">Tap to email</div></div>
           <div class="c-arr">&#8250;</div>
         </a>
         <a class="contact-row" href="https://wa.me/353876122597">
@@ -133,17 +133,12 @@ body{font-family:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sa
           <div><div class="c-label">WhatsApp</div><div class="c-hint">Tap to message</div></div>
           <div class="c-arr">&#8250;</div>
         </a>
-        <a class="contact-row" href="https://maps.google.com/?q=13+The+Grange,+Dunningstown+Road,+Kilkenny" target="_blank">
-          <div class="c-icon" style="background:#f3e8ff"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7c3aed" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
-          <div><div class="c-label">13 The Grange</div><div class="c-hint">Dunningstown Road, Kilkenny</div></div>
-          <div class="c-arr">&#8250;</div>
-        </a>
       </div>
     </div>
   </div>
 
   <div class="about-wrap" id="view-about" style="display:none">
-    <div class="avatar">KL</div>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA0CAIAAABZzcxIAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAUSklEQVRogb2ZaYxdyXXfz6mqu7z9vX79emWzu7mTQ86iGWk8mk0azVgeWN6k2IGVwHEg2IaBGAZiOwGSD/kQJDAQCwqyAckHS0hiWfAm22NLM0Npdg2poUjOcG022XuzX7/X3W+9a20nH15zSMkTwZxhUh8uLu67Vff3/vWvU3WqkIjgx5a//sbX/ud/+7LruUOVUnWotLbeWN9ohFGslLJGA1hrjLaAyBjjtVr1i7/0OTB0Y2Flo9H84m/882d/5h/8+PY/RMEfD621/tIvfGZ1eTGbyVSHir1+tLXTNcYgkCsgTmQqJVmDYBJpARgXQjjuTz371N6Jkfkby43t9r/89//pYz/xxP8n6FOvvXzym38c9nvz83PtdhcQfc8NoxQQOUPOMEpSABKcaa2jWMo0SaUiQM654ziffeZx1xHbO+1Uw1e+9mcj45P3EJp94NNv/fnXv/of/53HKZ/1piYny+WS5zphlHDOXMEZYioVAiCgUlYqyznzsznGEMhqpdM0ffnVt5FBmiqZRP/l9/+NtfYeQn+A0ovzc//qN//R7PRUIV/o9fqX5+ba21s//ZnHHvv4x9xcmXMRRPFWq9Pp9hgiQ7DGcIaAkAT99saCSaPtbnxuoSHBfeyR+5pbnW4//L1/+x+eef7n7hW0+LuPvvlHfwgEWpkgCBeWlnzUv/+vf/vg0ftc33dcTwiXc844R2TIGAIQEFmy1hitN9dXf/D6t7c3VqbHSl99+eLG5raxkPHdr/3XrzzxzE+5nndPoH/UHr1u59Tr30GENE0bjUav1/3izz03ve8AMsaQM8YZ54zv3iBjwDgyzhjjnAvhjE9NP/XTvzg+c7iQcZ8+MXVlfimf9QFgfW315At/fk+IPwD69BuvaJW6rhOGUXOndXiycujocRoUGBjpDjshAg6uA4cDAGTzhYef/snyyOSJ2VrBY+1uL0qU54pvfPW/KyX/n0CfO/0WWcs5C8IoDIInH7mfO84Al4isMUYbo7U1hqwFa4EI7MAcxmhtjLHWZrK5+x/9tOdnHzk0vr7RzGZcztn62sr3Xj1576G11pfPn0mV5oj9IBzKsrE9e4EIAAfQxhitlVJSylQpqZUySmmllJJq8EQrawwRlYeHZ448dGx6WMkUgLS21tILf/K/7gn0Dw3E+vpqu7VVLRd6/ajTDw4eqGXzRQIw2lyZX1pcrcdpmvX92ek99x894DiucAQiIyKtlUzllfnFenNLKV0q5A5MT04dOLyxfO3AeCkIImOZI/jF82eXrs/NHjzyEaF/SOnL751nCJ7r9IKo2+sd2jdNADc3t7/xwnc3NrcOze75+IlDkyOV+ka93+tGYZDGiUzTJI6jINjZ3p6/sZB1xUStYrT+9qtvf+d750anDx2equ60uxnfYYwZrV/8q7/4iMTwI0ovzV+WUhPZOEnJ6MnxESCIkvQf/swznucbY9Ikzjo4VsnFQR8BGGOchNYqiUOj4o8f2ycc4flZz/cePnF4Y7O5tn7zwN6Jv3ln0XG4VFpp8+bJv/3Sb/3OR4x9P6T0wrXLUmmpTD8Ih3Ke52UA4ej+add1Ldmg3w+DQEmZJnG/11EyHUxM1tgkjvuddprEMk3jKEyTFBHHRqr3Hd43Nrm3VswopaQyjuCtna0fnHrzoxDDnUorKRfmr3me0+6FQRjumawg44jIBF/eaF5ebS1vNHYa9aP7p4+OFyqFnEwTxpgQQsk0jSNr7Va7c3WjV99uT+2dyXHz3GMPcMaLQyMT1XwjShA4Y2iteeXFv/nkp579KNC3ld5YX4vCvsNZpxcqKWtDJQBCxK1Wd1Pm/GJ5z2j++6dOXrhwupfbG8axVpoxlqYx41xrvdMNevkZnnHOnnnlre/+ydGf+MzLZ+YA0ctkJ2uVdqef8R0EjGL5zpuvJHF8b6BvXLuslFLaxHFirR0bLgEAY6zZTT71/M++9q0/euG1ixdX4ivzS6MTk8orW2sAqFwZNloarXITh6L+1tUba+cWwtOX6xdOn3z6+c/Xt1rI2OTYcBjFnLM41ZxjHIXvnjl1b6Drq0v9MNXaSCk/+8i+A5PDyBjj4mMPHLfWDtfG33vndVfwhw7vrw6PTB844mUyrudrpRzH9/zM9KHjpaHRs2+/EsfR9FhttDY6VB3eMznBOa8NlRHIGGMsAZG19u3XX/0o0Lc9vbq8qLVRWiulHtg/KgRHZJxzh2Suv/JPfv13a5WhnMMef/Znx4crql5nwzXhOI7ra61qY+NMd558+tntX/vN+sKlpz75+LHHfzIbrGiHM879TLaYdbVWAEQAWpvzH03p29Drq8vWmlSqrMs5Q0SGCIwxABCUHh/PHP/t39KWwBoVrUnfTeM46HUAgIj8TDaNu5Vk/dd++QuAv8TRIqVxpACAMc6FqOT9NJWIHIBSqW6uLPV73UKx9OGgd+1hrV1fXQEiKZXvcgAAZGQJERHAaG2NBSAwymrFuRDCSZNYydRxvSSKkjgqVYYAiINx0LCBGYxGREQEwnzG7fajjCeUtkRWq3R9dflDK30bOuz3LVmptOdwZIzIKplYawGBrDVWkyXHcZWUjAsp051mA4A5rm+s3W5sWmtd10dkWitrrTUaLCGi0VqrNOc7cZI6giltBp/bbjbv5Ei6290b70SNxb+LSNboqEdkZdhNW+vW6F17KCl7va61REDdUGdyJcZYHPaTONJaG2OMNgCKMeZlMkYrJeXa4rXNtSVEsJYc19u7/6DWinOBgMZoY4yxRikVh0GaRDnfMcYYY4jIklWa0iR5H0vF/Xj13WIh36tfBTefrYzsSqll2t6g7oZA2+rHhaznum6v3bgFraTWxpIlCz0pT89vPTg7bI0Jup24UnUcl4iQMcbYYPi7nnfkgUeW5i4lcehncgePPwiAaRIjY0BgrbHWpnEcBf1+t6WSaJDgKK2JQFvLCJVWAEDWpu2bemupVCwmcVRfX5+e/gQAGJnITp16G54QsUpipcqFfBJHSRSEkLlz7UFkyRIg4guvfP/VjPvPvvBEr71TrFS5EK6nrLVpEgsh/EzW8/29+w/NHj5ORGSt0SpN4igK4ygEANfPAEAShd12K+i0Li1svPSDRWTMaLObT1iqVKpJd7u7eBZkgMjCLq0vL9WOPIomiZbOCps4jKcq7fTahVLFCtFr7xRKFcxk425wGxoRCYCIkCEABLF89dz1z1eHe+3WYH2DyLrb2xdfu1S2mZx2BDoOE4wxQ0ZZrUD1XWUKcOyTx7lwtJJBr9ttbXfaOy+dmbfWCs61MbeYwcadxvmXiqUyz+bJWq3VnpkZG250r9eFcF3PY1z4fsZxvKDbyeTyldpov9O+duXSgSd/fheaMcYYAtGAHhGJ6Oy1m4/eV88Vyn42x4VTqgztP3r8zW9f/YNTJ4dKxYzrcgKyRAjKmkjKIIi+8qVfnZo90O92kjjqd9rd7ebb793ohSljDBCMsUSWCIRgeuOye+ggIBitjdHWGCBijCEyIkNEjLE4CoTjloaGo7AfNDv1xtbx5381Vx7ehXYc13E9wASIEBEZkiFt7Ml35kaqFS+b40J4vp/LFz/3ucdsO/z66e92UROBsZYzBgBVr/g7z//80ccOEUEU9Pvdzk6z3mhsvHlhabcnB/4jAKAHDs9Wh8rWGpkkyBhjyIUAACLavQB5foaJgkySnWadcz40MuaWR3PlYXh/cuFC+H4WoYuIA+GtsQBwdWXr0vVlx/WEcBDR83xvPP/Ecyc+dfR4vdUMZShV6rl+OVMZGi7h4YzIOO2dZqe1vdOot5s3v/32FanMLjKAtTQgeujofoY4+K4QDheCcwGIQGStscZIKeMoSKKIrC1Xa8j52uJ1d/TgYDa6bY9MNoeMoSUA4JwbpQdp91+9dXW4lGOMD5xTGR4pHRzd8W9WNktTbA9njrRJH3t22qmMVvvdzk6zsdOo79RXT713/dJS45bMiIiASERANDU+7Pq+cFwhHMf1PD/DhIM46Axrrc0CWKNz+ZKxprO9tb62uufhZ2vTu3nabehiuSy4UFYhY4MdgcFmQZyq/33y3X/83KA9Y43xM9nCyLCuSGWtRiJyS864ECIK+lEQ7DQ2duorZy5ee/Gd67cjEwIADvp9qJQbn9zjuB4AWkvWWkvEgHazfaOtMdZaJWXYr9fXV/zh6fue/6duJvd+Y7ejR21kzHOvamOE4MYgY8wYiwAA0OnHf/itH3z+yfiYkkbrUrXmej5jDG8Va0yUJmkct5r1rY2V752/cm5+9c4Nt/ffJIIHD8/kCgXhODJN+90OAApHOK6HiEYrmaYyTdMkDvs9vzK+/+lfrIzPwA+X29BjExOu6yZpKrhgjCRnxljEwZYHRIn6s9fee2Sz9dyjaZpE5eqon80yLhCBiJSUcdBvb9VXV5a/+frFbr8Tq1uDb3czBwFxsHtycHrCcT3X9RITL1x+r9/Z8XMF1/OtNVopQFae2FebOTL9xH2VsWn4oHKH0qPjvudGsUBkWU+ksZBSIwJH0AYIwFi6utJ86sTU5sr1fnu7VB31s3nGuZYy6LZ67a006ne63ZVGZ7gAKh64DowFjoCMMUSyREDDlSLnwnG9bKF48MSDO/3ULQ7rJCrWJoYmZstjU1w4H8j6AdCj4xNCcEdwQpbx3cB1XWPRKzieZ4KQZISo7t83gghgVdBpBp1tLhxkzBpttGIICDBezY8N5YwOLQEAOAKsAmTAGDLGjCXBMJ/Lcs65EK7jVkfGiHf2f/oLP57y/wo9MTUtOGeMMS48z82OzO45/ky+XI2D/vr19w6PeMdK6Z6cMiolot0IptNBXYZw6wZ/5bMPvbu0fXrNZEZmMr7XrS/21q46jHHOrSXP4b7vM84ZY8gYF8KqSCah6+d+FO3vA713dj8iMs5jEv2AzX7iM8zLcs5HxicnJicfHOePzeaKjq2vLK0tXA3aW9bqOxtijGeL1YnZg0Pj0+MdLCwlrZTFYVDZ9+DG5bd7q5cIjdUq6/nCcQeDGAAZMiFE0m19SOja6HhmdH+nd8P1fU8Im3RH9sxu3VxqLl4a33/83c3ShWYyO+ydmDz+yMH7k1Z9Y2Wh3942WnHhFIdqwxPTXVZZ6OBfXowjaYNutLW+MDpzxOEIqp8dnlBKZbKlWjYVQiAygAE2Ci6Sfqs4OvVhoL/zvbNm/MHsxibnnHNuZCSEky8UtudP3dharO1/uFCduKbyyy3lcPyVT+779Oce0lpbaxFRGvjP31mpd6VMkygMdm5e765fLdYmC8Xy5o1zjhCC86mjj1b2Hh2R61wIvOWnQd/KsPf3J4b3M5erV+f+x9f/Nl+qlkamhBCMMRl2EdH1s4wxhzOX2UKp3NpYWr9xQRn60zObFnk2l88XS9lc/rVrrc2e3lydb6zMFUplJvuO4LliFRH7W2uc8/Lo9MShj8XterJxiXGOgIC7G92MMRl1Pwz0l7/8B0Frk3M+PHV4MAuouGdU6npZZAwRVRII4RRLle2l95IoDCRcXu/ubqcjnlnsaq2aC+eLpbIQjox7iJgpDMm4r5OAMT5x+OO9xvLNy295AhjjMIj/BIiIjOkkvGvoubm5N954o7V2lcgWhvcINzP4Lew0ueMKxwMAGfUA0fGzAqnVWCWic8u70IuNfjexvZ0m6sTLFIyWOo0R0S+Uw9YmAOSr44i4MXcaAfKZzCBZvk3AmE6iu4Z+8aWXETEJ2u2NRUAsjuwFACKK2g0CcPw8AKRhD8g6XpYx3t9atdZcWe+n2gDAueUOEXSaq5xzJ5N736Bethh2GgBQGp2pX3sHAKaOP1kdn0HGYJeaBhM8mMHh791AX11tMcaIqLFwXsu0MDozWDYkQZssCS8LANZqawwTDhMi7TWjsJ8auLDcspbeXe4oJcOdm4wL4fhKxgDAuIOMp2GXAJA7Yae594FPl8ZmmU12z2YGlkZARCKtZXoX0FGcbHaS4en7AEDGYWPpkpspCj9vrY2DDlkrXH+QIRmVAoBwMxxh5+YiEb19bed6vduOdK/VJBVyx0OGRksA4I5njU2jPhNu0G6MHnjYyxaWzr6kelvwvjlocMzEOOMy6t8F9MrqmtRmeOa+Qm2KiLZWLsdhP1seIyKVRkqlTLiDLxitAEi4PiL2NheVktc2w6++umgttW5e54xxxyMCoyQRIRdapVqlwsslUZgt1xbPvBh3twQfnIgBERDQQGrGmIyDu4BeuH5tZ+UyIo4f/oSXrxglmytXvELVWmuNUUnIhDvIRo3RRMS4Q0Qkw52NZWupG9s4CqKd9YG6RGS0HLw2WBkzxxeZ0uqF17WMa7P3ZwvVgca3jvYIARjjdxVA2OLiYvvmja3Fi4zxyWOPC9ffWZ/nft4SWGvTOOADexCpJCCCQWxhDJsL5/vddhJH69fOcaQBNABpmRARE66MQyICFEGnmYa9PcefyhSrOg1gcMhLdDuPZmju5oiRbbV7iNBan9uY+z53vcljjxuV9ttbTqZgrU3DnnCzg3GpkhiAnEx+t6ZNo952GPYpbg2CmJspAIFO48EfMFpaaw1B2Nqs7X9IJuHi2ZNo1a4v6I6RiEzdldLKKVf3HkHEXnNl/dJbfqEyPHWkvbnq5YestTIOuLNrDy1jAHS87G5NxkrlodrImBC7awE/XwEEncYDT8skJCLmZiwRMr5+5RQXAhh/X2e4ldogIt1VyFuee7c2c3zs4MOM8ai9uXbxjdrMsTTqOdmytVYmEfJdpiToAIB7S2kiupX2AQAgF7mhMaNVEnYAgDu+UdJaay35xdr61XeY8J595tnRoRLtDsJB1YFD4O6U3ly9sfruq4XanqkTTzLhhO1Gc/FCsTYpMgVrSaXRwHgAoOL+nfa4RT5AJzdT5MLRMhksuAFApTEyTkRJ2JNp/NTjj/2LX37aFRxoIPWu4AOp72py+T+Zn2NAKHiJwwAAAABJRU5ErkJggg==" alt="Karen Lowry" style="width:68px;height:68px;border-radius:50%;object-fit:cover;object-position:top;display:block;margin:0 auto 10px;border:2px solid #dbeafe">
     <div class="about-name">Múinteoir Karen Lowry</div>
     <div class="about-sub">Primary School Substitute Teacher</div>
     <div class="about-loc">Kilkenny City &amp; Surrounding Areas</div>
@@ -154,9 +149,9 @@ body{font-family:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sa
           <div><div class="c-label">087 612 2597</div><div class="c-hint">Tap to call</div></div>
           <div class="c-arr">&#8250;</div>
         </a>
-        <a class="contact-row" href="mailto:karen.lowry80@gmail.com">
+        <a class="contact-row" href="/cdn-cgi/l/email-protection#cca7adbea9a2e2a0a3bbbeb5f4fc8caba1ada5a0e2afa3a1">
           <div class="c-icon c-icon-b"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
-          <div><div class="c-label">karen.lowry80@gmail.com</div><div class="c-hint">Tap to email</div></div>
+          <div><div class="c-label"><span class="__cf_email__" data-cfemail="c2a9a3b0a7acecaeadb5b0bbfaf282a5afa3abaeeca1adaf">[email&#160;protected]</span></div><div class="c-hint">Tap to email</div></div>
           <div class="c-arr">&#8250;</div>
         </a>
         <a class="contact-row" href="https://wa.me/353876122597">
@@ -213,7 +208,7 @@ body{font-family:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sa
 
 </div>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 var BIN_ID     = "69d3a0ebaaba882197cc4c36";
 var MASTER_KEY = "$2a$10$uO8xNvp0fL078nDV79Q1buDfDkYCSR48.GxhU3kRW9a.OMKqdqMkS";
 var PIN        = "1975";
@@ -283,7 +278,7 @@ function renderCalendar() {
     '<div class="chip chip-g">'+av+' available</div><div class="chip chip-r">'+bk+' booked</div>';
   var BG   = {available:"#dcfce7",booked:"#fee2e2",unset:"#f1f5f9"};
   var TXT  = {available:"#15803d",booked:"#b91c1c",unset:"#94a3b8"};
-  var SYM  = {available:"&#10003;",booked:"&#10007;",unset:""};
+  var SYM  = {available:"available",booked:"booked",unset:""};
   var BDR  = {available:"#86efac",booked:"#fca5a5",unset:"#e2e8f0"};
   var BDR2 = {available:"#16a34a",booked:"#dc2626",unset:"#93c5fd"};
   var grid = document.getElementById("calGrid"); grid.innerHTML = "";
@@ -343,7 +338,7 @@ function updateDots(err) {
 function checkPin() {
   if (pinInput===PIN) {
     editMode=true; document.getElementById("editBtn").textContent="Done";
-    document.getElementById("editBar").classList.add("show");
+    ById("editBar").classList.add("show");
     closePinSheet(); renderCalendar();
   } else {
     updateDots(true);

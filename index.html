@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Substitute Teacher Availability</title>
+
+<!-- ═══════════════════════════════════════════════════════════
+     SUBSTITUTE TEACHER AVAILABILITY PAGE
+     ───────────────────────────────────────────────────────────
+     HOW TO CUSTOMISE:
+       1. Find the TEACHER CONFIG section below (search "TEACHER CONFIG")
+       2. Replace all the placeholder values with your own details
+       3. Change your PIN from "1234" to something only you know
+       4. Add your Firebase config (search "FIREBASE CONFIG")
+     ═══════════════════════════════════════════════════════════ -->
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;-webkit-tap-highlight-color:transparent}
+body{
+  font-family:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+  background:#f8fafc;color:#0f172a;
+}
+#app{
+  max-width:480px;margin:0 auto;background:#fff;
+  min-height:100vh;display:flex;flex-direction:column;
+  position:relative;overflow:hidden;
+}
+
+/* ── Header ── */
+.header{background:#1e3a8a;padding:18px 16px 14px;position:relative;flex-shrink:0}
+.header-name{font-size:19px;font-weight:600;color:#fff;letter-spacing:-.3px}
+.header-title{font-size:12px;color:rgba(255,255,255,.8);margin-top:3px}
+.edit-btn{
+  position:absolute;top:16px;right:14px;
+  background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.3);
+  color:#fff;border-radius:8px;padding:6px 12px;
+  font-size:12px;cursor:pointer;font-weight:500;font-family:inherit;
+}
+.edit-bar{
+  background:#fefce8;border-bottom:1px solid #fde047;
+  padding:7px 14px;font-size:12px;color:#854d0e;
+  display:none;align-items:center;gap:6px;flex-shrink:0;
+}
+.edit-bar.show{display:flex}
+
+/* ── Tabs ── */
+.tabs{display:flex;border-bottom:1px solid #f1f5f9;flex-shrink:0}
+.tab-btn{
+  flex:1;padding:12px 0;border:none;background:none;
+  font-size:14px;font-weight:500;cursor:pointer;
+  font-family:inherit;transition:color .15s;
+  color:#94a3b8;border-bottom:2px solid transparent;
+}
+.tab-btn.active{color:#1e3a8a;border-bottom:2px solid #1e3a8a}
+
+/* ── Calendar view ── */
+.cal-wrap{padding:14px;flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch}
+.summary{display:flex;gap:8px;margin-bottom:14px;flex-wrap:wrap}
+.chip{border-radius:20px;padding:4px 11px;font-size:12px;font-weight:500}
+.chip-g{background:#dcfce7;color:#15803d}
+.chip-r{background:#fee2e2;color:#b91c1c}
+.col-headers{display:grid;grid-template-columns:repeat(7,1fr);gap:3px;margin-bottom:3px}
+.col-hdr{text-align:center;font-size:10px;font-weight:500;padding-bottom:2px}
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:3px}
+.cell{
+  aspect-ratio:1;border-radius:7px;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  user-select:none;transition:transform .1s,opacity .15s;
+  cursor:default;border:1px solid transparent;
+}
+.cell:active.editable{transform:scale(.91)}
+.cell-num{font-size:12px;line-height:1}
+.cell-sym{font-size:9px;line-height:1;margin-top:2px}
+.cell-dot{width:3px;height:3px;border-radius:50%;background:#93c5fd;margin-top:2px}
+.legend{display:flex;gap:14px;margin-top:14px;justify-content:center}
+.leg-item{display:flex;align-items:center;gap:5px;font-size:11px}
+.leg-swatch{width:10px;height:10px;border-radius:3px;flex-shrink:0}
+.contact-bar{margin-top:14px;background:#eff6ff;border-radius:12px;padding:11px 14px}
+.contact-bar-lbl{font-size:11px;color:#93c5fd;font-weight:500;margin-bottom:6px;text-transform:uppercase;letter-spacing:.05em}
+.contact-links{display:flex;flex-wrap:wrap;gap:6px 16px}
+.contact-links a{font-size:13px;color:#1e3a8a;font-weight:500;text-decoration:none}
+
+/* ── About view ── */
+.about-wrap{padding:20px 16px;flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch}
+.avatar{
+  width:68px;height:68px;border-radius:50%;
+  background:#dbeafe;color:#1e3a8a;
+  display:flex;align-items:center;justify-content:center;
+  font-size:22px;font-weight:600;margin:0 auto 10px;
+}
+.about-name{text-align:center;font-size:18px;font-weight:600;color:#0f172a}
+.about-sub{text-align:center;font-size:13px;color:#64748b;margin-top:3px}
+.about-loc{text-align:center;font-size:12px;color:#94a3b8;margin-top:2px;margin-bottom:20px}
+.contact-card{border-radius:12px;overflow:hidden;margin-bottom:12px;border:1px solid #f1f5f9}
+.contact-row{
+  display:flex;align-items:center;gap:12px;padding:13px 14px;
+  background:#f8fafc;border-bottom:1px solid #f1f5f9;
+  text-decoration:none;color:#0f172a;
+}
+.contact-row:last-child{border-bottom:none}
+.c-icon{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.c-icon-g{background:#dcfce7}
+.c-icon-b{background:#dbeafe}
+.c-label{font-weight:500;font-size:14px}
+.c-hint{font-size:11px;color:#94a3b8}
+.c-arr{margin-left:auto;color:#e2e8f0;font-size:18px;font-weight:300}
+.section{background:#f8fafc;border-radius:12px;padding:13px 14px;margin-bottom:12px;border:1px solid #f1f5f9}
+.section-title{font-size:11px;font-weight:600;color:#475569;margin-bottom:8px;text-transform:uppercase;letter-spacing:.05em}
+.section-body{font-size:14px;color:#475569;line-height:1.65}
+.qual-row{display:flex;align-items:center;gap:8px;padding:3px 0;font-size:14px;color:#475569}
+.qual-dot{width:5px;height:5px;border-radius:50%;background:#3b82f6;flex-shrink:0}
+
+/* ── Loading state ── */
+.loading{text-align:center;padding:40px 0;color:#94a3b8;font-size:14px}
+
+/* ── PIN overlay ── */
+.overlay{
+  position:absolute;inset:0;background:rgba(0,0,0,.45);
+  display:none;align-items:flex-end;z-index:100;
+}
+.overlay.show{display:flex}
+.pin-sheet{background:#fff;border-radius:20px 20px 0 0;padding:22px 20px 32px;width:100%}
+.pin-title{text-align:center;font-size:16px;font-weight:600;color:#0f172a;margin-bottom:4px}
+.pin-sub{text-align:center;font-size:13px;color:#94a3b8;margin-bottom:18px}
+.pin-dots{display:flex;justify-content:center;gap:14px;margin-bottom:20px}
+.pin-dot{width:13px;height:13px;border-radius:50%;background:#e2e8f0;transition:background .15s}
+.pin-dot.filled{background:#1e3a8a}
+.pin-dot.error{background:#ef4444}
+.pin-err{text-align:center;color:#ef4444;font-size:13px;margin-bottom:10px;min-height:20px}
+.numpad{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;max-width:280px;margin:0 auto}
+.num-btn{
+  padding:15px;font-size:20px;border:none;
+  background:#f1f5f9;border-radius:12px;
+  cursor:pointer;font-family:inherit;color:#0f172a;transition:background .1s;
+}
+.num-btn:active{background:#e2e8f0}
+.num-btn.del{font-size:14px;color:#64748b;font-weight:500}
+.num-btn.empty{background:transparent;cursor:default;pointer-events:none}
+</style>
+</head>
+<body>
+<div id="app">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="header-name" id="hName"></div>
+    <div class="header-title" id="hTitle"></div>
+    <button class="edit-btn" id="editBtn" onclick="toggleEdit()">Edit</button>
+  </div>
+  <div class="edit-bar" id="editBar">
+    ✏ Edit mode — tap any weekday to update your availability
+  </div>
+
+  <!-- Tabs -->
+  <div class="tabs">
+    <button class="tab-btn active" id="tab-calendar" onclick="switchTab('calendar')">Calendar</button>
+    <button class="tab-btn" id="tab-about" onclick="switchTab('about')">About Me</button>
+  </div>
+
+  <!-- Calendar view -->
+  <div class="cal-wrap" id="view-calendar">
+    <div class="summary" id="summary"></div>
+    <div class="col-headers">
+      <div class="col-hdr" style="color:#94a3b8">Mon</div>
+      <div class="col-hdr" style="color:#94a3b8">Tue</div>
+      <div class="col-hdr" style="color:#94a3b8">Wed</div>
+      <div class="col-hdr" style="color:#94a3b8">Thu</div>
+      <div class="col-hdr" style="color:#94a3b8">Fri</div>
+      <div class="col-hdr" style="color:#cbd5e1">Sat</div>
+      <div class="col-hdr" style="color:#cbd5e1">Sun</div>
+    </div>
+    <div class="cal-grid" id="calGrid"><div class="loading">Loading...</div></div>
+    <div class="legend">
+      <div class="leg-item">
+        <div class="leg-swatch" style="background:#dcfce7;border:1px solid #86efac"></div>
+        <span style="color:#15803d">Available</span>
+      </div>
+      <div class="leg-item">
+        <div class="leg-swatch" style="background:#fee2e2;border:1px solid #fca5a5"></div>
+        <span style="color:#b91c1c">Booked</span>
+      </div>
+      <div class="leg-item">
+        <div class="leg-swatch" style="background:#f1f5f9;border:1px solid #e2e8f0"></div>
+        <span style="color:#94a3b8">Not set</span>
+      </div>
+    </div>
+    <div class="contact-bar">
+      <div class="contact-bar-lbl">Contact</div>
+      <div class="contact-links">
+        <a id="qPhone" href="#"></a>
+        <a id="qEmail" href="#"></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- About view -->
+  <div class="about-wrap" id="view-about" style="display:none">
+    <div class="avatar" id="avInitials"></div>
+    <div class="about-name" id="aName"></div>
+    <div class="about-sub" id="aTitle"></div>
+    <div class="about-loc" id="aLoc"></div>
+    <div class="contact-card">
+      <a class="contact-row" id="aPhoneRow" href="#">
+        <div class="c-icon c-icon-g">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#15803d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.62 3.38a2 2 0 0 1 2-1.87h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+          </svg>
+        </div>
+        <div><div class="c-label" id="aPhoneNum"></div><div class="c-hint">Tap to call</div></div>
+        <div class="c-arr">›</div>
+      </a>
+      <a class="contact-row" id="aEmailRow" href="#">
+        <div class="c-icon c-icon-b">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+            <polyline points="22,6 12,13 2,6"/>
+          </svg>
+        </div>
+        <div><div class="c-label" id="aEmailAddr"></div><div class="c-hint">Tap to email</div></div>
+        <div class="c-arr">›</div>
+      </a>
+    </div>
+    <div class="section">
+      <div class="section-title">About</div>
+      <p class="section-body" id="aBio"></p>
+    </div>
+    <div class="section">
+      <div class="section-title">Qualifications</div>
+      <div id="aQuals"></div>
+    </div>
+  </div>
+
+  <!-- PIN overlay -->
+  <div class="overlay" id="pinOverlay" onclick="if(event.target===this)closePinSheet()">
+    <div class="pin-sheet">
+      <div class="pin-title">Enter your PIN</div>
+      <div class="pin-sub">Schools cannot access edit mode</div>
+      <div class="pin-dots" id="pinDots">
+        <div class="pin-dot" id="d0"></div>
+        <div class="pin-dot" id="d1"></div>
+        <div class="pin-dot" id="d2"></div>
+        <div class="pin-dot" id="d3"></div>
+      </div>
+      <div class="pin-err" id="pinErr">&nbsp;</div>
+      <div class="numpad">
+        <button class="num-btn" onclick="pinDigit('1')">1</button>
+        <button class="num-btn" onclick="pinDigit('2')">2</button>
+        <button class="num-btn" onclick="pinDigit('3')">3</button>
+        <button class="num-btn" onclick="pinDigit('4')">4</button>
+        <button class="num-btn" onclick="pinDigit('5')">5</button>
+        <button class="num-btn" onclick="pinDigit('6')">6</button>
+        <button class="num-btn" onclick="pinDigit('7')">7</button>
+        <button class="num-btn" onclick="pinDigit('8')">8</button>
+        <button class="num-btn" onclick="pinDigit('9')">9</button>
+        <button class="num-btn empty"></button>
+        <button class="num-btn" onclick="pinDigit('0')">0</button>
+        <button class="num-btn del" onclick="pinDel()">⌫</button>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /#app -->
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     FIREBASE SDK  (do not edit these lines)
+     ═══════════════════════════════════════════════════════════ -->
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
+import { getFirestore, doc, getDoc, setDoc, deleteDoc, collection, getDocs }
+  from "https://www.gstatic.com/firebasejs/11.6.0/firebase-firestore.js";
+
+
+/* ═══════════════════════════════════════════════════════════
+   TEACHER CONFIG ─ Replace ALL values below with your own
+   ═══════════════════════════════════════════════════════════ */
+const TEACHER = {
+  name:           "Karen Lowry",               // ← your full name
+  title:          "Primary School Substitute Teacher",
+  phone:          "087 612 2597",            // ← your mobile number
+  email:          "karen.lowry80@gmail.com",          // ← your email address
+  location:       "Kilkenny City & surrounding areas",
+  bio:            "Qualified primary school teacher with X years of experience across all class levels. Fully Garda vetted and comfortable with all subjects including Irish and Maths. Always punctual and well-prepared. Please feel free to get in touch to discuss availability.",
+  qualifications: [
+    "B.Ed. Primary Education",
+    "Garda Vetted",
+    "First Aid Certified"
+    // add more lines here if needed, separated by commas
+  ]
+};
+
+const PIN = "1975"; // ← Change this to your own 4-digit PIN
+
+
+/* ═══════════════════════════════════════════════════════════
+   FIREBASE CONFIG ─ Paste your config object from Firebase
+   (Firebase console → Project Settings → Your apps → SDK setup)
+   ═══════════════════════════════════════════════════════════ */
+const firebaseConfig = {
+  apiKey: "AIzaSyBX4pEWBoOSEHYlvYVtUsXtglJYiTeG3Oo",
+  authDomain: "sub-teacher-kl.firebaseapp.com",
+  projectId: "sub-teacher-kl",
+  storageBucket: "sub-teacher-kl.firebasestorage.app",
+  messagingSenderId: "197970168959",
+  appId: "1:197970168959:web:98a60b1933cb36b55a834a"
+};
+
+
+
+/* ═══════════════════════════════════════════════════════════
+   APP CODE ─ No need to edit below this line
+   ═══════════════════════════════════════════════════════════ */
+const app    = initializeApp(firebaseConfig);
+const db     = getFirestore(app);
+const COL    = "availability"; // Firestore collection name
+
+let editMode = false;
+let pinInput = "";
+let avail    = {}; // { "2026-04-06": "available" | "booked" }
+
+// ── Helpers ────────────────────────────────────────────────
+const pad    = n => String(n).padStart(2,"0");
+const toKey  = d => `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`;
+const isWknd = d => d.getDay()===0 || d.getDay()===6;
+
+function get30Days() {
+  const t = new Date(); t.setHours(0,0,0,0);
+  return Array.from({length:30}, (_,i) => {
+    const d = new Date(t); d.setDate(t.getDate()+i); return d;
+  });
+}
+
+// ── Firebase: load all availability ───────────────────────
+async function loadAvailability() {
+  try {
+    const snap = await getDocs(collection(db, COL));
+    avail = {};
+    snap.forEach(d => { avail[d.id] = d.data().status; });
+  } catch(e) {
+    console.warn("Firebase load failed:", e);
+  }
+  renderCalendar();
+}
+
+// ── Firebase: save one day ─────────────────────────────────
+async function saveDay(key, status) {
+  try {
+    if (!status || status === "unset") {
+      await deleteDoc(doc(db, COL, key));
+    } else {
+      await setDoc(doc(db, COL, key), { status });
+    }
+  } catch(e) {
+    console.warn("Firebase save failed:", e);
+  }
+}
+
+// ── Populate static info ───────────────────────────────────
+function initInfo() {
+  const initials = TEACHER.name.trim().split(/\s+/).map(w=>w[0]).slice(0,2).join("").toUpperCase();
+  document.getElementById("hName").textContent    = TEACHER.name;
+  document.getElementById("hTitle").textContent   = TEACHER.title;
+  document.getElementById("avInitials").textContent = initials;
+  document.getElementById("aName").textContent    = TEACHER.name;
+  document.getElementById("aTitle").textContent   = TEACHER.title;
+  document.getElementById("aLoc").textContent     = TEACHER.location;
+  document.getElementById("aBio").textContent     = TEACHER.bio;
+  document.getElementById("aPhoneNum").textContent = TEACHER.phone;
+  document.getElementById("aEmailAddr").textContent = TEACHER.email;
+  document.getElementById("aPhoneRow").href = "tel:" + TEACHER.phone.replace(/\D/g,"");
+  document.getElementById("aEmailRow").href = "mailto:" + TEACHER.email;
+  document.getElementById("qPhone").textContent = TEACHER.phone;
+  document.getElementById("qPhone").href = "tel:" + TEACHER.phone.replace(/\D/g,"");
+  document.getElementById("qEmail").textContent = TEACHER.email;
+  document.getElementById("qEmail").href = "mailto:" + TEACHER.email;
+  document.getElementById("aQuals").innerHTML =
+    TEACHER.qualifications.map(q=>`<div class="qual-row"><div class="qual-dot"></div>${q}</div>`).join("");
+}
+
+// ── Calendar render ────────────────────────────────────────
+function renderCalendar() {
+  const days     = get30Days();
+  const todayKey = toKey(new Date());
+
+  // Summary chips
+  const av = Object.values(avail).filter(v=>v==="available").length;
+  const bk = Object.values(avail).filter(v=>v==="booked").length;
+  document.getElementById("summary").innerHTML =
+    `<div class="chip chip-g">${av} available</div>` +
+    `<div class="chip chip-r">${bk} booked</div>`;
+
+  // Leading blanks to align Mon=col0
+  const firstDow = days[0].getDay();
+  const blanks   = firstDow === 0 ? 6 : firstDow - 1;
+  const cells    = [...Array(blanks).fill(null), ...days];
+
+  const grid = document.getElementById("calGrid");
+  grid.innerHTML = "";
+
+  const ST = {
+    available: { bg:"#dcfce7", txt:"#15803d", sym:"✓" },
+    booked:    { bg:"#fee2e2", txt:"#b91c1c", sym:"✗" },
+    unset:     { bg:"#f1f5f9", txt:"#94a3b8", sym:null },
+    weekend:   { bg:"#f8fafc", txt:"#cbd5e1", sym:null },
+  };
+
+  cells.forEach(date => {
+    const div = document.createElement("div");
+    div.className = "cell";
+    if (!date) { grid.appendChild(div); return; }
+
+    const k    = toKey(date);
+    const wknd = isWknd(date);
+    const s    = wknd ? "weekend" : (avail[k] || "unset");
+    const isT  = k === todayKey;
+    const st   = ST[s];
+
+    div.style.background = st.bg;
+    div.style.opacity    = wknd ? "0.4" : "1";
+
+    const bdrColor = s==="available" ? "#86efac" : s==="booked" ? "#fca5a5" : s==="weekend" ? "#f1f5f9" : "#e2e8f0";
+    const bdrToday = s==="available" ? "#16a34a" : s==="booked" ? "#dc2626" : "#93c5fd";
+    div.style.border = isT ? `2px solid ${bdrToday}` : `1px solid ${bdrColor}`;
+
+    if (editMode && !wknd) div.classList.add("editable");
+
+    let html = `<div class="cell-num" style="color:${st.txt};font-weight:${isT?700:400}">${date.getDate()}</div>`;
+    if (st.sym) html += `<div class="cell-sym" style="color:${st.txt}">${st.sym}</div>`;
+    else if (isT) html += `<div class="cell-dot"></div>`;
+    div.innerHTML = html;
+
+    if (!wknd) {
+      div.onclick = async () => {
+        if (!editMode) return;
+        const cur  = avail[k] || "unset";
+        const next = {unset:"available", available:"booked", booked:"unset"}[cur];
+        avail[k] = next;
+        if (next === "unset") delete avail[k];
+        renderCalendar();
+        await saveDay(k, next === "unset" ? null : next);
+      };
+    }
+    grid.appendChild(div);
+  });
+}
+
+// ── Tab switching ──────────────────────────────────────────
+window.switchTab = function(t) {
+  ["calendar","about"].forEach(id => {
+    document.getElementById("view-"+id).style.display = id===t ? "" : "none";
+    document.getElementById("tab-"+id).classList.toggle("active", id===t);
+  });
+};
+
+// ── Edit mode ──────────────────────────────────────────────
+window.toggleEdit = function() {
+  if (editMode) {
+    editMode = false;
+    document.getElementById("editBtn").textContent = "Edit";
+    document.getElementById("editBar").classList.remove("show");
+    renderCalendar();
+  } else {
+    document.getElementById("pinOverlay").classList.add("show");
+  }
+};
+
+window.closePinSheet = function() {
+  document.getElementById("pinOverlay").classList.remove("show");
+  pinInput = "";
+  updateDots();
+};
+
+// ── PIN ────────────────────────────────────────────────────
+window.pinDigit = function(d) {
+  if (pinInput.length >= 4) return;
+  pinInput += d;
+  updateDots();
+  if (pinInput.length === 4) checkPin();
+};
+
+window.pinDel = function() {
+  pinInput = pinInput.slice(0,-1);
+  updateDots();
+};
+
+function updateDots(err) {
+  for (let i=0;i<4;i++) {
+    const el = document.getElementById("d"+i);
+    el.className = "pin-dot";
+    if (err)              el.classList.add("error");
+    else if (i<pinInput.length) el.classList.add("filled");
+  }
+}
+
+function checkPin() {
+  if (pinInput === PIN) {
+    editMode = true;
+    document.getElementById("editBtn").textContent = "Done";
+    document.getElementById("editBar").classList.add("show");
+    closePinSheet();
+    renderCalendar();
+  } else {
+    updateDots(true);
+    document.getElementById("pinErr").textContent = "Incorrect PIN — try again";
+    setTimeout(() => {
+      pinInput = "";
+      updateDots();
+      document.getElementById("pinErr").innerHTML = "&nbsp;";
+    }, 700);
+  }
+}
+
+// ── Start ──────────────────────────────────────────────────
+initInfo();
+loadAvailability();
+
+</script>
+</body>
+</html>

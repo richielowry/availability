@@ -213,13 +213,9 @@ body{font-family:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sa
 
 <script>
 var BIN_ID     = "69d3a0ebaaba882197cc4c36";
-// Reading needs no key if the bin is set to Public in JSONBin (recommended).
-// If you keep the bin Private, paste a READ-ONLY Access Key here instead.
-var READ_KEY   = "";
-// Cosmetic gate only - stops schools stumbling into edit mode. Not real security.
+var MASTER_KEY = "$2a$10$uO8xNvp0fL078nDV79Q1buDfDkYCSR48.GxhU3kRW9a.OMKqdqMkS";
 var PIN        = "1975";
 var LS         = "kl_avail_v4";
-var LS_WRITE   = "kl_write_key"; // edit key is stored on Karen's device only, never in this file
 var API        = "https://api.jsonbin.io/v3/b/" + BIN_ID;
 var MONTHS     = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
 var editMode   = false;
@@ -234,18 +230,12 @@ function fromCache() {
 function toCache(d) {
   try { localStorage.setItem(LS, JSON.stringify(d)); } catch(e) {}
 }
-function getWriteKey() {
-  try { return localStorage.getItem(LS_WRITE) || ""; } catch(e) { return ""; }
-}
-function setWriteKey(k) {
-  try { if (k) localStorage.setItem(LS_WRITE, k); else localStorage.removeItem(LS_WRITE); } catch(e) {}
-}
 function dot(state) {
   $("syncDot").className = "sync-dot" + (state ? " " + state : "");
   if (state === "saved") setTimeout(function() { dot(""); }, 2000);
 }
 function loadFromCloud() {
-  fetch(API + "/latest", { headers: READ_KEY ? { "X-Access-Key": READ_KEY } : {} })
+  fetch(API + "/latest", { headers: { "X-Master-Key": MASTER_KEY } })
     .then(function(r) { if (!r.ok) throw new Error(r.status); return r.json(); })
     .then(function(data) {
       if (editMode) return; // don't overwrite in-progress edits
@@ -257,26 +247,14 @@ function loadFromCloud() {
     .catch(function(e) { console.warn("Load error:", e); dot("error"); });
 }
 function saveToCloud() {
-  var wk = getWriteKey();
-  toCache(avail);
-  if (!wk) { dot("error"); return; }
   dot("saving");
   fetch(API, {
     method: "PUT",
-    headers: { "Content-Type": "application/json", "X-Access-Key": wk },
+    headers: { "Content-Type": "application/json", "X-Master-Key": MASTER_KEY },
     body: JSON.stringify(avail)
   })
-    .then(function(r) {
-      if (r.status === 401 || r.status === 403) { setWriteKey(""); throw new Error("Edit key rejected"); }
-      if (!r.ok) throw new Error(r.status);
-      dot("saved");
-    })
-    .catch(function(e) {
-      console.error("Save error:", e); dot("error");
-      if (String(e.message).indexOf("rejected") > -1) {
-        alert("Your edit key was rejected, so changes were not saved. Tap Done, then Edit, and enter a valid key.");
-      }
-    });
+    .then(function(r) { if (!r.ok) throw new Error(r.status); toCache(avail); dot("saved"); })
+    .catch(function(e) { console.error("Save error:", e); dot("error"); });
 }
 function pad(n) { return String(n).padStart(2, "0"); }
 function dateKey(d) { return d.getFullYear() + "-" + pad(d.getMonth()+1) + "-" + pad(d.getDate()); }
@@ -371,21 +349,16 @@ function updateDots(err) {
     if (err) el.classList.add("error"); else if (i<pinInput.length) el.classList.add("filled");
   }
 }
+function enterEditMode() {
+  editMode=true;
+  $("editBtn").textContent="Done";
+  $("editBar").classList.add("show");
+  renderCalendar();
+}
 function checkPin() {
   if (pinInput===PIN) {
-    closePinSheet();                      // hide the keypad first
-    $("pinOverlay").style.display="none"; // belt and braces
-    setTimeout(function(){ $("pinOverlay").style.display=""; }, 0);
-    if (!getWriteKey()) {
-      var k = window.prompt("First time on this device: paste your edit key (JSONBin Access Key with update permission).");
-      k = (k || "").trim();
-      if (!k) { alert("No edit key entered, so edit mode was not turned on."); return; }
-      setWriteKey(k);
-    }
-    editMode=true;
-    $("editBtn").textContent="Done";
-    $("editBar").classList.add("show");
-    renderCalendar();
+    closePinSheet();
+    enterEditMode();
   } else {
     updateDots(true);
     $("pinErr").textContent="Incorrect PIN — try again";

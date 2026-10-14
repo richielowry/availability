@@ -1,152 +1,524 @@
-<!doctype html>
-<html lang="en-IE">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Home Tuition | Karen Lowry</title>
-<meta name="description" content="One-to-one primary school home tuition in Kilkenny and surrounding areas, including specialised support for children on the autism spectrum. Qualified primary teacher.">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Karen Lowry — Substitute Teacher</title>
 <style>
-  :root{
-    --ink:#23302d; --muted:#5d6b67; --bg:#fbf8f3; --card:#ffffff;
-    --accent:#2f7a6b; --accent-dark:#235d51; --warm:#f2e6d2; --line:#e6dfd2;
-  }
-  *{box-sizing:border-box}
-  html{scroll-behavior:smooth}
-  body{margin:0;font-family:Georgia,"Times New Roman",serif;color:var(--ink);background:var(--bg);line-height:1.65;font-size:17px}
-  h1,h2,h3,.btn,nav,label,.tag{font-family:"Segoe UI",Helvetica,Arial,sans-serif}
-  .wrap{max-width:1040px;margin:0 auto;padding:0 20px}
-  section{padding:56px 0}
-  h1{font-size:clamp(2rem,5vw,3.1rem);line-height:1.15;margin:0 0 16px;letter-spacing:-.01em}
-  h2{font-size:1.7rem;margin:0 0 12px;letter-spacing:-.01em}
-  h3{font-size:1.1rem;margin:0 0 6px}
-  p{margin:0 0 14px}
-  .lead{font-size:1.2rem;color:var(--muted);max-width:640px}
-  .btn{display:inline-block;background:var(--accent);color:#fff;text-decoration:none;padding:13px 24px;border-radius:999px;font-weight:600;font-size:1rem;border:0;cursor:pointer}
-  .btn:hover{background:var(--accent-dark)}
-  .btn.ghost{background:transparent;color:var(--accent-dark);border:2px solid var(--accent)}
-  .btn.ghost:hover{background:var(--accent);color:#fff}
-  .hero{background:linear-gradient(180deg,var(--warm),var(--bg));padding:72px 0 56px}
-  .tag{display:inline-block;background:#fff;border:1px solid var(--line);color:var(--accent-dark);padding:5px 13px;border-radius:999px;font-size:.85rem;font-weight:600;margin:0 6px 8px 0}
-  .cta-row{margin-top:24px;display:flex;gap:12px;flex-wrap:wrap}
-  .grid{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
-  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px}
-  .card p{color:var(--muted);margin:0;font-size:.98rem}
-  .num{width:34px;height:34px;border-radius:50%;background:var(--accent);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-family:"Segoe UI",sans-serif;font-weight:700;margin-bottom:10px}
-  .band{background:var(--warm)}
-  .two{display:grid;gap:36px;grid-template-columns:1fr;align-items:center}
-  @media(min-width:820px){.two{grid-template-columns:1fr 1fr}}
-  .photo{aspect-ratio:4/3;border-radius:16px;background:repeating-linear-gradient(45deg,#e9e2d3,#e9e2d3 12px,#efe9dc 12px,#efe9dc 24px);display:flex;align-items:center;justify-content:center;color:var(--muted);font-family:"Segoe UI",sans-serif;font-size:.9rem;text-align:center;padding:20px;border:1px dashed #cfc6b3}
-  ul.ticks{list-style:none;padding:0;margin:0}
-  ul.ticks li{padding-left:30px;position:relative;margin-bottom:10px}
-  ul.ticks li:before{content:"✓";position:absolute;left:0;color:var(--accent);font-weight:700;font-family:"Segoe UI",sans-serif}
-  details{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 20px;margin-bottom:10px}
-  summary{cursor:pointer;font-family:"Segoe UI",sans-serif;font-weight:600}
-  details p{margin:10px 0 0;color:var(--muted)}
-  form{display:grid;gap:14px;max-width:560px}
-  label{font-weight:600;font-size:.92rem;display:block;margin-bottom:4px}
-  input,select,textarea{width:100%;padding:12px 14px;border:1px solid #cfc6b3;border-radius:10px;font:inherit;background:#fff}
-  input:focus,select:focus,textarea:focus{outline:2px solid var(--accent);border-color:transparent}
-  .note{font-size:.88rem;color:var(--muted)}
-  footer{padding:28px 0;border-top:1px solid var(--line);font-size:.9rem;color:var(--muted)}
-  .todo{background:#fff4c2;padding:0 4px;border-radius:3px}
-  .topnav{background:#fff;border-bottom:1px solid var(--line)}
-  .topnav .wrap{display:flex;gap:6px;flex-wrap:wrap}
-  .topnav a{font-family:"Segoe UI",Helvetica,Arial,sans-serif;font-weight:600;color:var(--muted);text-decoration:none;padding:16px 16px;border-bottom:3px solid transparent}
-  .topnav a:hover{color:var(--accent-dark)}
-  .topnav a.active{color:var(--accent-dark);border-bottom-color:var(--accent)}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;-webkit-tap-highlight-color:transparent}
+body{font-family:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#f8fafc;color:#0f172a}
+#app{max-width:480px;margin:0 auto;background:#fff;min-height:100vh;display:flex;flex-direction:column;position:relative;overflow:hidden}
+.header{background:#1e3a8a;padding:14px 16px;position:relative;flex-shrink:0}
+.header-inner{display:flex;align-items:center;gap:11px;padding-right:90px}
+.header-avatar{height:52px;width:52px;object-fit:cover;object-position:top;border-radius:50%;flex-shrink:0;border:2px solid rgba(255,255,255,.35)}
+.header-name{font-size:18px;font-weight:600;color:#fff;letter-spacing:-.3px}
+.header-title{font-size:11px;color:rgba(255,255,255,.8);margin-top:3px}
+.edit-btn{position:absolute;top:50%;right:14px;transform:translateY(-50%);background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.3);color:#fff;border-radius:8px;padding:6px 12px;font-size:12px;cursor:pointer;font-weight:500;font-family:inherit}
+.sync-dot{position:absolute;top:50%;right:72px;transform:translateY(-50%);width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.3);transition:background .4s}
+.sync-dot.saving{background:#fde047}
+.sync-dot.saved{background:#86efac}
+.sync-dot.error{background:#f87171}
+.edit-bar{background:#fefce8;border-bottom:1px solid #fde047;padding:7px 14px;font-size:12px;color:#854d0e;display:none;align-items:center;gap:6px;flex-shrink:0}
+.edit-bar.show{display:flex}
+.tabs{display:flex;border-bottom:1px solid #f1f5f9;flex-shrink:0}
+.tab-btn{flex:1;padding:12px 2px;border:none;background:none;font-size:13px;font-weight:500;cursor:pointer;font-family:inherit;color:#94a3b8;border-bottom:2px solid transparent;transition:color .15s}
+.tab-btn.active{color:#1e3a8a;border-bottom:2px solid #1e3a8a}
+.cal-wrap{padding:14px;flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch}
+.summary{display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap}
+.chip{border-radius:20px;padding:4px 11px;font-size:12px;font-weight:500}
+.chip-g{background:#dcfce7;color:#15803d}
+.chip-r{background:#fee2e2;color:#b91c1c}
+.col-headers{display:grid;grid-template-columns:repeat(5,1fr);gap:4px;margin-bottom:4px}
+.col-hdr{text-align:center;font-size:11px;font-weight:500;color:#94a3b8;padding-bottom:2px}
+.cal-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:4px}
+.cell{aspect-ratio:1;border-radius:8px;display:flex;flex-direction:column;align-items:center;justify-content:center;user-select:none;transition:transform .1s;cursor:default;border:1px solid transparent;gap:1px}
+.cell.editable:active{transform:scale(.91)}
+.cell-num{font-size:15px;line-height:1.1}
+.cell-mon{font-size:9px;line-height:1;opacity:.7;letter-spacing:.02em}
+.cell-sym{font-size:7px;line-height:1;letter-spacing:.01em;text-transform:uppercase;font-weight:600}
+.legend{display:flex;gap:14px;margin-top:12px;justify-content:center}
+.leg-item{display:flex;align-items:center;gap:5px;font-size:11px}
+.leg-swatch{width:10px;height:10px;border-radius:3px;flex-shrink:0}
+.contact-card{border-radius:12px;overflow:hidden;border:1px solid #f1f5f9}
+.contact-row{display:flex;align-items:center;gap:12px;padding:13px 14px;background:#f8fafc;border-bottom:1px solid #f1f5f9;text-decoration:none;color:#0f172a}
+.contact-row:last-child{border-bottom:none}
+.c-icon{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.c-icon-g{background:#dcfce7}
+.c-icon-b{background:#dbeafe}
+.c-icon-w{background:#dcfce7}
+.c-label{font-weight:500;font-size:14px}
+.c-hint{font-size:11px;color:#94a3b8}
+.c-arr{margin-left:auto;color:#e2e8f0;font-size:18px;font-weight:300}
+.cal-contact{margin-top:16px;display:flex;justify-content:center}
+.cal-contact .contact-card{width:100%;max-width:360px}
+.about-wrap{padding:20px 16px;flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch}
+.avatar{width:68px;height:68px;border-radius:50%;background:#dbeafe;color:#1e3a8a;display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:600;margin:0 auto 10px}
+.about-name{text-align:center;font-size:18px;font-weight:600}
+.about-sub{text-align:center;font-size:13px;color:#64748b;margin-top:3px}
+.about-loc{text-align:center;font-size:12px;color:#94a3b8;margin-top:2px;margin-bottom:20px}
+.about-contact{margin-bottom:12px}
+.section{background:#f8fafc;border-radius:12px;padding:13px 14px;margin-bottom:12px;border:1px solid #f1f5f9}
+.section-title{font-size:11px;font-weight:600;color:#475569;margin-bottom:8px;text-transform:uppercase;letter-spacing:.05em}
+.section-body{font-size:14px;color:#475569;line-height:1.65}
+.qual-row{display:flex;align-items:center;gap:8px;padding:3px 0;font-size:14px;color:#475569}
+.qual-dot{width:5px;height:5px;border-radius:50%;background:#3b82f6;flex-shrink:0}
+.t-hero{background:#eff6ff;border-radius:14px;padding:18px 16px;margin-bottom:14px}
+.t-hero h2{font-size:19px;line-height:1.25;color:#1e3a8a;margin-bottom:8px;letter-spacing:-.2px}
+.t-hero p{font-size:14px;color:#475569;line-height:1.6;margin-bottom:14px}
+.t-btn{display:inline-block;background:#1e3a8a;color:#fff;border:none;border-radius:20px;padding:10px 20px;font-size:14px;font-weight:500;font-family:inherit;cursor:pointer;text-decoration:none}
+.t-card{background:#fff;border:1px solid #f1f5f9;border-radius:12px;padding:12px 14px;margin-bottom:8px}
+.t-card h4{font-size:14px;font-weight:600;color:#0f172a;margin-bottom:3px}
+.t-card p{font-size:13px;color:#64748b;line-height:1.55}
+.step{display:flex;gap:11px;align-items:flex-start;margin-bottom:12px}
+.step-num{width:26px;height:26px;border-radius:50%;background:#1e3a8a;color:#fff;font-size:13px;font-weight:600;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.step h4{font-size:14px;font-weight:600;margin-bottom:2px}
+.step p{font-size:13px;color:#64748b;line-height:1.55}
+.overlay{position:absolute;inset:0;background:rgba(0,0,0,.45);display:none;align-items:flex-end;z-index:100}
+.overlay.show{display:flex}
+.pin-sheet{background:#fff;border-radius:20px 20px 0 0;padding:22px 20px 32px;width:100%}
+.pin-title{text-align:center;font-size:16px;font-weight:600;color:#0f172a;margin-bottom:4px}
+.pin-sub{text-align:center;font-size:13px;color:#94a3b8;margin-bottom:18px}
+.pin-dots{display:flex;justify-content:center;gap:14px;margin-bottom:20px}
+.pin-dot{width:13px;height:13px;border-radius:50%;background:#e2e8f0;transition:background .15s}
+.pin-dot.filled{background:#1e3a8a}
+.pin-dot.error{background:#ef4444}
+.pin-err{text-align:center;color:#ef4444;font-size:13px;margin-bottom:10px;min-height:20px}
+.numpad{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;max-width:280px;margin:0 auto}
+.num-btn{padding:15px;font-size:20px;border:none;background:#f1f5f9;border-radius:12px;cursor:pointer;font-family:inherit;color:#0f172a;transition:background .1s}
+.num-btn:active{background:#e2e8f0}
+.num-btn.del{font-size:14px;color:#64748b;font-weight:500}
+.num-btn.empty{background:transparent;cursor:default;pointer-events:none}
+
+/* ===== Desktop / large screens (phones keep the layout above) ===== */
+@media (min-width:860px){
+  html{background:#f1f5f9}
+  body{background:linear-gradient(180deg,#e0e7ff 0,#f1f5f9 360px) no-repeat}
+  #app{max-width:1120px;margin:28px auto;min-height:calc(100vh - 56px);border-radius:20px;box-shadow:0 12px 48px rgba(30,58,138,.14)}
+  .header{padding:24px 40px}
+  .header-inner{gap:18px;padding-right:120px}
+  .header-avatar{height:72px;width:72px;border-width:3px}
+  .header-name{font-size:26px}
+  .header-title{font-size:14px;margin-top:4px}
+  .edit-btn{right:40px;padding:9px 18px;font-size:14px}
+  .sync-dot{right:116px}
+  .edit-bar{padding:9px 40px;font-size:13px}
+  .tabs{padding:0 28px}
+  .tab-btn{flex:none;padding:17px 28px;font-size:15px}
+  .tab-btn:hover{color:#1e3a8a}
+
+  /* Calendar: grid on the left, contact card on the right */
+  .cal-wrap{display:grid;grid-template-columns:minmax(0,1fr) 340px;column-gap:48px;align-content:start;padding:36px 40px 44px}
+  .summary,.col-headers,.cal-grid,.legend{grid-column:1}
+  .summary{margin-bottom:16px}
+  .chip{font-size:13px;padding:5px 13px}
+  .col-headers,.cal-grid{gap:8px}
+  .col-hdr{font-size:13px}
+  .cell{aspect-ratio:1.3;border-radius:12px;gap:2px}
+  .cell-num{font-size:20px}
+  .cell-mon{font-size:11px}
+  .cell-sym{font-size:10px}
+  .cell.editable{cursor:pointer}
+  .cell.editable:hover{transform:translateY(-2px);box-shadow:0 4px 12px rgba(15,23,42,.12)}
+  .legend{margin-top:18px;justify-content:flex-start;gap:20px}
+  .leg-item{font-size:13px}
+  .cal-contact{grid-column:2;grid-row:1 / span 4;margin-top:0;align-self:start;justify-content:stretch}
+  .cal-contact .contact-card{max-width:none}
+  .contact-row{transition:background .15s}
+  .contact-row:hover{background:#eff6ff}
+
+  /* About: profile card left, details right */
+  #view-about{display:grid;grid-template-columns:340px minmax(0,1fr);column-gap:48px;align-content:start;padding:40px}
+  .about-side{position:sticky;top:24px;align-self:start}
+  #aboutAvatar{width:104px!important;height:104px!important}
+  .about-name{font-size:22px}
+  .about-sub{font-size:14px}
+  .about-loc{font-size:13px}
+  .about-main .section{padding:20px 22px;border-radius:14px}
+  .about-main .section:first-child{margin-top:0}
+  .section-title{font-size:12px}
+  .section-body{font-size:15.5px;line-height:1.7}
+  .qual-row{font-size:15px;padding:5px 0;align-items:flex-start}
+  .qual-dot{margin-top:9px}
+
+  /* Home School Tuition: hero across the top, two columns below */
+  #view-tuition{display:grid;grid-template-columns:1fr 1fr;column-gap:24px;align-content:start;padding:40px}
+  .t-hero{grid-column:1 / -1;padding:36px 40px;border-radius:18px;margin-bottom:24px}
+  .t-hero h2{font-size:32px;max-width:640px;line-height:1.2}
+  .t-hero p{font-size:17px;max-width:620px}
+  .t-btn{padding:13px 28px;font-size:15px;transition:background .15s}
+  .t-btn:hover{background:#172e6e}
+  #view-tuition .section{padding:22px 24px;border-radius:14px}
+  .t-card h4,.step h4{font-size:15px}
+  .t-card p,.step p{font-size:14px}
+  #view-tuition .cal-contact{margin-top:6px;justify-content:flex-start}
+  #view-tuition .cal-contact .contact-card{max-width:none;width:100%}
+
+  /* PIN pad: centred dialog instead of a bottom sheet */
+  .overlay{position:fixed;align-items:center;justify-content:center}
+  .pin-sheet{max-width:380px;border-radius:20px;padding:28px 24px 32px}
+}
 </style>
 </head>
 <body>
+<div id="app">
 
-<nav class="topnav" aria-label="Main">
-  <div class="wrap">
-    <a href="/"><span class="todo">Tab 1 name</span></a>
-    <a href="/about"><span class="todo">Tab 2: About</span></a>
-    <a href="/home-school-tuition" aria-current="page" class="active">Home School Tuition</a>
+  <div class="header">
+    <div class="header-inner">
+      <img class="header-avatar" id="headerAvatar" src="data:image/png;base64,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" alt="Karen Lowry">
+      <div>
+        <div class="header-name">Múinteoir Karen Lowry</div>
+        <div class="header-title">Primary School Substitute Teacher</div>
+      </div>
+    </div>
+    <div class="sync-dot" id="syncDot"></div>
+    <button class="edit-btn" id="editBtn" onclick="toggleEdit()">Edit</button>
   </div>
-</nav>
+  <div class="edit-bar" id="editBar">&#9999; Edit mode &#8212; tap any weekday to update your availability</div>
 
-<header class="hero">
-  <div class="wrap">
-    <span class="tag">Qualified primary teacher</span><span class="tag">Garda vetted</span><span class="tag">Kilkenny &amp; surrounding areas</span>
-    <h1>Calm, patient one-to-one tuition, in the comfort of your own home.</h1>
-    <p class="lead">Specialised home tuition for primary school children, including children on the autism spectrum, planned around your child's strengths, interests and pace.</p>
-    <div class="cta-row">
-      <a class="btn" href="#enquire">Get in touch</a>
-      <a class="btn ghost" href="#how">How it works</a>
+  <div class="tabs">
+    <button class="tab-btn active" id="tab-calendar" onclick="switchTab('calendar')">Calendar</button>
+    <button class="tab-btn" id="tab-about" onclick="switchTab('about')">About Me</button>
+    <button class="tab-btn" id="tab-tuition" onclick="switchTab('tuition')">Home School Tuition</button>
+  </div>
+
+  <div class="cal-wrap" id="view-calendar">
+    <div class="summary" id="summary"></div>
+    <div class="col-headers">
+      <div class="col-hdr">Mon</div>
+      <div class="col-hdr">Tue</div>
+      <div class="col-hdr">Wed</div>
+      <div class="col-hdr">Thu</div>
+      <div class="col-hdr">Fri</div>
+    </div>
+    <div class="cal-grid" id="calGrid"></div>
+    <div class="legend">
+      <div class="leg-item"><div class="leg-swatch" style="background:#dcfce7;border:1px solid #86efac"></div><span style="color:#15803d">Available</span></div>
+      <div class="leg-item"><div class="leg-swatch" style="background:#fee2e2;border:1px solid #fca5a5"></div><span style="color:#b91c1c">Booked</span></div>
+      <div class="leg-item"><div class="leg-swatch" style="background:#f1f5f9;border:1px solid #e2e8f0"></div><span style="color:#94a3b8">Not set</span></div>
+    </div>
+    <div class="cal-contact">
+      <div class="contact-card">
+        <a class="contact-row" href="tel:0876122597">
+          <div class="c-icon c-icon-g"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#15803d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.62 3.38a2 2 0 0 1 2-1.87h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+          <div><div class="c-label">087 612 2597</div><div class="c-hint">Tap to call</div></div>
+          <div class="c-arr">&#8250;</div>
+        </a>
+        <a class="contact-row" href="mailto:karen.lowry80@gmail.com">
+          <div class="c-icon c-icon-b"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+          <div><div class="c-label">karen.lowry80@gmail.com</div><div class="c-hint">Tap to email</div></div>
+          <div class="c-arr">&#8250;</div>
+        </a>
+        <a class="contact-row" href="https://wa.me/353876122597">
+          <div class="c-icon c-icon-w"><svg width="16" height="16" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></div>
+          <div><div class="c-label">WhatsApp</div><div class="c-hint">Tap to message</div></div>
+          <div class="c-arr">&#8250;</div>
+        </a>
+      </div>
     </div>
   </div>
-</header>
 
-<section>
-  <div class="wrap">
-    <h2>Who I can help</h2>
-    <p class="lead">Every child learns differently. Tuition is tailored to the individual rather than squeezed into a one-size-fits-all lesson plan.</p>
-    <div class="grid" style="margin-top:24px">
-      <div class="card"><h3>Children on the autism spectrum</h3><p>Structured, predictable sessions with visual supports and a gentle pace, built around how your child learns best.</p></div>
-      <div class="card"><h3>Additional learning needs</h3><p>Support for children with literacy or numeracy difficulties, or those who need extra confidence and consolidation.</p></div>
-      <div class="card"><h3>Children out of school</h3><p>Continuity of learning for children who are awaiting a school place or are missing school for medical or other reasons.</p></div>
-      <div class="card"><h3>Catch-up &amp; transition</h3><p>Help to bridge gaps in Irish, English and Maths, or to prepare for a move to a new class or school.</p></div>
+  <div class="about-wrap" id="view-about" style="display:none">
+    <div class="about-side">
+    <img id="aboutAvatar" alt="Karen Lowry" style="width:68px;height:68px;border-radius:50%;object-fit:cover;object-position:top;display:block;margin:0 auto 10px;border:2px solid #dbeafe">
+    <div class="about-name">Múinteoir Karen Lowry</div>
+    <div class="about-sub">Primary School Substitute Teacher</div>
+    <div class="about-loc">Kilkenny City &amp; Surrounding Areas</div>
+    <div class="about-contact">
+      <div class="contact-card">
+        <a class="contact-row" href="tel:0876122597">
+          <div class="c-icon c-icon-g"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#15803d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.62 3.38a2 2 0 0 1 2-1.87h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+          <div><div class="c-label">087 612 2597</div><div class="c-hint">Tap to call</div></div>
+          <div class="c-arr">&#8250;</div>
+        </a>
+        <a class="contact-row" href="mailto:karen.lowry80@gmail.com">
+          <div class="c-icon c-icon-b"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+          <div><div class="c-label">karen.lowry80@gmail.com</div><div class="c-hint">Tap to email</div></div>
+          <div class="c-arr">&#8250;</div>
+        </a>
+        <a class="contact-row" href="https://wa.me/353876122597">
+          <div class="c-icon c-icon-w"><svg width="16" height="16" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></div>
+          <div><div class="c-label">WhatsApp</div><div class="c-hint">Tap to message</div></div>
+          <div class="c-arr">&#8250;</div>
+        </a>
+        <a class="contact-row" href="https://maps.google.com/?q=Greenshill,+Kilkenny City" target="_blank" rel="noopener">
+          <div class="c-icon" style="background:#f3e8ff"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7c3aed" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <div><div class="c-label">Greenshill</div><div class="c-hint">Kilkenny City</div></div>
+          <div class="c-arr">&#8250;</div>
+        </a>
+      </div>
+    </div>
+    </div>
+    <div class="about-main">
+    <div class="section">
+      <div class="section-title">About</div>
+      <p class="section-body">A motivated and enthusiastic newly qualified primary school teacher with classroom experience across a range of class levels, including a special education setting. Brings excellent communication, organisational and interpersonal skills, alongside ten years’ leadership experience in a professional setting. Committed to creating a positive, inclusive and engaging learning environment where every child can thrive.</p>
+      <p class="section-body" style="margin-top:10px">I have a real passion for one-to-one learning. When a child has a teacher&rsquo;s full attention in a calm, familiar setting, they can learn at their own pace and begin to believe in themselves.</p>
+      <p class="section-body" style="margin-top:10px">That is why I also offer Home School Tuition: tailored 121 support in your own home for primary school children, including children on the autism spectrum and those with additional learning needs. Each child gets a plan built around their strengths and interests. <a href="#" onclick="switchTab('tuition');return false;" style="color:#1e3a8a;font-weight:500">Find out more</a>.</p>
+    </div>
+    <div class="section">
+      <div class="section-title">Qualifications</div>
+      <div class="qual-row"><div class="qual-dot"></div>PME in Primary Education (2.2 Honours Degree) - Hibernia College - 2024-2026</div>
+      <div class="qual-row"><div class="qual-dot"></div>B.A. in International Marketing &amp; Languages - French/German (2.1 Honours Degree) - Dublin City University - 2003-2006</div>
+    </div>
+    <div class="section">
+      <div class="section-title">Teaching Council Registration</div>
+      <p class="section-body">Registration number - 343874 (Route 1)</p>
+    </div>
     </div>
   </div>
-</section>
 
-<section class="band" id="how">
-  <div class="wrap">
-    <h2>How it works</h2>
-    <div class="grid" style="margin-top:24px">
-      <div class="card"><div class="num">1</div><h3>Introductory chat</h3><p>We talk about your child, what's working, what isn't, and what you'd like to achieve. No obligation.</p></div>
-      <div class="card"><div class="num">2</div><h3>A personal learning plan</h3><p>I put together clear, achievable goals that link to the primary curriculum and your child's own interests.</p></div>
-      <div class="card"><div class="num">3</div><h3>Regular sessions at home</h3><p>Relaxed one-to-one sessions in a familiar space, at a time that suits your family.</p></div>
-      <div class="card"><div class="num">4</div><h3>Ongoing feedback</h3><p>Short updates after sessions and regular progress reviews so you always know how things are going.</p></div>
+  <div class="about-wrap" id="view-tuition" style="display:none">
+    <div class="t-hero">
+      <h2>Calm, patient one-to-one tuition in your own home</h2>
+      <p>Specialised home school tuition for primary school children, including children on the autism spectrum, planned around your child&rsquo;s strengths, interests and pace.</p>
+      <button class="t-btn" onclick="goContact()">Get in touch</button>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Who I can help</div>
+      <div class="t-card"><h4>Children on the autism spectrum</h4><p>Structured, predictable sessions with visual supports and a gentle pace, built around how your child learns best.</p></div>
+      <div class="t-card"><h4>Additional learning needs</h4><p>Support with literacy or numeracy difficulties, or extra confidence and consolidation.</p></div>
+      <div class="t-card"><h4>Children out of school</h4><p>Continuity of learning for children awaiting a school place or missing school for medical or other reasons.</p></div>
+      <div class="t-card" style="margin-bottom:0"><h4>Catch-up &amp; transition</h4><p>Help with Irish, English and Maths, or preparing for a new class or school.</p></div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">How it works</div>
+      <div class="step"><div class="step-num">1</div><div><h4>Introductory chat</h4><p>We talk about your child, what&rsquo;s working, what isn&rsquo;t, and what you&rsquo;d like to achieve. No obligation.</p></div></div>
+      <div class="step"><div class="step-num">2</div><div><h4>A personal learning plan</h4><p>Clear, achievable goals linked to the primary curriculum and your child&rsquo;s interests.</p></div></div>
+      <div class="step"><div class="step-num">3</div><div><h4>Regular sessions at home</h4><p>Relaxed one-to-one sessions in a familiar space, at a time that suits your family.</p></div></div>
+      <div class="step" style="margin-bottom:0"><div class="step-num">4</div><div><h4>Ongoing feedback</h4><p>Short updates after sessions and regular progress reviews.</p></div></div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">What a session looks like</div>
+      <div class="qual-row"><div class="qual-dot"></div>Settle in with a familiar routine and visual schedule</div>
+      <div class="qual-row"><div class="qual-dot"></div>Short, well-paced focus work</div>
+      <div class="qual-row"><div class="qual-dot"></div>Learning through play and your child&rsquo;s interests</div>
+      <div class="qual-row"><div class="qual-dot"></div>A positive finish and a note home</div>
+    </div>
+
+    <div class="section">
+    <div class="section-title">Get in touch</div>
+    <p class="section-body" style="margin-bottom:10px">Tell me a little about your child and I&rsquo;ll be in touch to arrange an introductory chat. Serving Kilkenny City and surrounding areas.</p>
+    <div class="cal-contact" id="tuition-contact">
+      <div class="contact-card">
+        <a class="contact-row" href="tel:0876122597">
+          <div class="c-icon c-icon-g"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#15803d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.62 3.38a2 2 0 0 1 2-1.87h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+          <div><div class="c-label">087 612 2597</div><div class="c-hint">Tap to call</div></div>
+          <div class="c-arr">&#8250;</div>
+        </a>
+        <a class="contact-row" href="mailto:karen.lowry80@gmail.com">
+          <div class="c-icon c-icon-b"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+          <div><div class="c-label">karen.lowry80@gmail.com</div><div class="c-hint">Tap to email</div></div>
+          <div class="c-arr">&#8250;</div>
+        </a>
+        <a class="contact-row" href="https://wa.me/353876122597">
+          <div class="c-icon c-icon-w"><svg width="16" height="16" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></div>
+          <div><div class="c-label">WhatsApp</div><div class="c-hint">Tap to message</div></div>
+          <div class="c-arr">&#8250;</div>
+        </a>
+      </div>
+    </div>
     </div>
   </div>
-</section>
 
-<section class="band">
-  <div class="wrap">
-    <h2>What a session might look like</h2>
-    <div class="grid" style="margin-top:24px">
-      <div class="card"><h3>Settle in</h3><p>A familiar routine and a visual schedule so your child knows what to expect.</p></div>
-      <div class="card"><h3>Focus work</h3><p>Short, well-paced activities in literacy, numeracy or the area we're targeting.</p></div>
-      <div class="card"><h3>Learning through play</h3><p>Games, hands-on materials and your child's favourite interests keep learning enjoyable.</p></div>
-      <div class="card"><h3>Wrap up</h3><p>A positive finish, with a note home on what we covered and what to try next.</p></div>
+  <div class="overlay" id="pinOverlay" onclick="if(event.target===this)closePinSheet()">
+    <div class="pin-sheet">
+      <div class="pin-title">Enter your PIN</div>
+      <div class="pin-sub">Schools cannot access edit mode</div>
+      <div class="pin-dots">
+        <div class="pin-dot" id="d0"></div>
+        <div class="pin-dot" id="d1"></div>
+        <div class="pin-dot" id="d2"></div>
+        <div class="pin-dot" id="d3"></div>
+      </div>
+      <div class="pin-err" id="pinErr">&nbsp;</div>
+      <div class="numpad">
+        <button class="num-btn" onclick="pinDigit('1')">1</button>
+        <button class="num-btn" onclick="pinDigit('2')">2</button>
+        <button class="num-btn" onclick="pinDigit('3')">3</button>
+        <button class="num-btn" onclick="pinDigit('4')">4</button>
+        <button class="num-btn" onclick="pinDigit('5')">5</button>
+        <button class="num-btn" onclick="pinDigit('6')">6</button>
+        <button class="num-btn" onclick="pinDigit('7')">7</button>
+        <button class="num-btn" onclick="pinDigit('8')">8</button>
+        <button class="num-btn" onclick="pinDigit('9')">9</button>
+        <button class="num-btn empty"></button>
+        <button class="num-btn" onclick="pinDigit('0')">0</button>
+        <button class="num-btn del" onclick="pinDel()">&#9003;</button>
+      </div>
     </div>
   </div>
-</section>
 
-<section>
-  <div class="wrap">
-    <h2>Common questions</h2>
-    <details><summary>Where do you provide tuition?</summary><p>In your home, across Kilkenny and nearby areas <span class="todo">[list towns / radius]</span>. Get in touch if you're not sure whether you're in range.</p></details>
-    <details><summary>How much does it cost?</summary><p>Rates depend on the type of support and travel distance. <span class="todo">[Add your hourly rate or "from €X per hour" here, or leave as "get in touch for a quote".]</span></p></details>
-    <details><summary>How often will sessions take place?</summary><p>Most families choose one to three sessions a week. We'll agree a pattern that works for your child and your household.</p></details>
-    <details><summary>Can the Department of Education home tuition grant be used?</summary><p>The Home Tuition Grant is for specific eligible circumstances, such as children awaiting a suitable school placement, and has its own conditions and application process. If you think your child may qualify, I'm happy to talk it through, but you should always confirm eligibility with the Department of Education / your local SENO. <span class="todo">[Remove if you don't want to mention this.]</span></p></details>
-    <details><summary>Are you registered and vetted?</summary><p>Yes. I'm registered with the Teaching Council and Garda vetted. <span class="todo">[Confirm details before publishing.]</span></p></details>
-  </div>
-</section>
+</div>
 
-<section class="band" id="enquire">
-  <div class="wrap">
-    <h2>Get in touch</h2>
-    <p class="lead">Tell me a little about your child and I'll come back to you within a couple of working days to arrange a free introductory chat.</p>
-    <form action="#" method="post" style="margin-top:24px">
-      <div><label for="name">Your name</label><input id="name" name="name" autocomplete="name" required></div>
-      <div><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" required></div>
-      <div><label for="phone">Phone (optional)</label><input id="phone" name="phone" type="tel" autocomplete="tel"></div>
-      <div><label for="age">Child's age / class</label><input id="age" name="age" placeholder="e.g. 8 years, 2nd class"></div>
-      <div><label for="area">Area</label><input id="area" name="area" placeholder="Town or Eircode area"></div>
-      <div><label for="msg">How can I help?</label><textarea id="msg" name="msg" rows="4"></textarea></div>
-      <button class="btn" type="submit">Send enquiry</button>
-      <p class="note">Please don't include sensitive details here. We can discuss your child's needs privately on our first call.</p>
-    </form>
-    <p class="note todo" style="display:inline-block;margin-top:16px">Developer note: connect this form to your site's form handler (or swap for a simple mailto: link).</p>
-  </div>
-</section>
+<script>
+var BIN_ID     = "69d3a0ebaaba882197cc4c36";
+var MASTER_KEY = "$2a$10$uO8xNvp0fL078nDV79Q1buDfDkYCSR48.GxhU3kRW9a.OMKqdqMkS";
+var PIN        = "1975";
+var LS         = "kl_avail_v4";
+var API        = "https://api.jsonbin.io/v3/b/" + BIN_ID;
+var MONTHS     = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+var editMode   = false;
+var pinInput   = "";
+var avail      = {};
 
-<footer>
-  <div class="wrap">&copy; <span id="yr"></span> Karen Lowry · Home Tuition · Kilkenny, Ireland</div>
-</footer>
-<script>document.getElementById('yr').textContent=new Date().getFullYear();</script>
+function $(id) { return document.getElementById(id); }
+
+function fromCache() {
+  try { return JSON.parse(localStorage.getItem(LS) || "{}"); } catch(e) { return {}; }
+}
+function toCache(d) {
+  try { localStorage.setItem(LS, JSON.stringify(d)); } catch(e) {}
+}
+function dot(state) {
+  $("syncDot").className = "sync-dot" + (state ? " " + state : "");
+  if (state === "saved") setTimeout(function() { dot(""); }, 2000);
+}
+function loadFromCloud() {
+  fetch(API + "/latest", { headers: { "X-Master-Key": MASTER_KEY } })
+    .then(function(r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+    .then(function(data) {
+      if (editMode) return; // don't overwrite in-progress edits
+      var remote = data.record || {};
+      if (JSON.stringify(remote) !== JSON.stringify(avail)) {
+        avail = remote; toCache(avail); renderCalendar();
+      }
+    })
+    .catch(function(e) { console.warn("Load error:", e); dot("error"); });
+}
+function saveToCloud() {
+  dot("saving");
+  fetch(API, {
+    method: "PUT",
+    headers: { "Content-Type": "application/json", "X-Master-Key": MASTER_KEY },
+    body: JSON.stringify(avail)
+  })
+    .then(function(r) { if (!r.ok) throw new Error(r.status); toCache(avail); dot("saved"); })
+    .catch(function(e) { console.error("Save error:", e); dot("error"); });
+}
+function pad(n) { return String(n).padStart(2, "0"); }
+function dateKey(d) { return d.getFullYear() + "-" + pad(d.getMonth()+1) + "-" + pad(d.getDate()); }
+function getBlockStart() {
+  var d = new Date(); d.setHours(0,0,0,0);
+  var dow = d.getDay();
+  if (dow === 6) { d.setDate(d.getDate() + 2); }
+  else if (dow === 0) { d.setDate(d.getDate() + 1); }
+  dow = d.getDay();
+  d.setDate(d.getDate() - (dow - 1));
+  return d;
+}
+function getWeekDays() {
+  var mon = getBlockStart(); var days = [];
+  for (var w = 0; w < 5; w++) {
+    for (var d = 0; d < 5; d++) {
+      var date = new Date(mon); date.setDate(mon.getDate() + w*7 + d); days.push(date);
+    }
+  }
+  return days;
+}
+function renderCalendar() {
+  var days = getWeekDays(); var tk = dateKey(new Date());
+  // count only the days currently shown
+  var av = 0, bk = 0;
+  for (var j = 0; j < days.length; j++) {
+    var st = avail[dateKey(days[j])];
+    if (st === "available") av++;
+    if (st === "booked") bk++;
+  }
+  $("summary").innerHTML =
+    '<div class="chip chip-g">'+av+' available</div><div class="chip chip-r">'+bk+' booked</div>';
+  var BG   = {available:"#dcfce7",booked:"#fee2e2",unset:"#f1f5f9"};
+  var TXT  = {available:"#15803d",booked:"#b91c1c",unset:"#94a3b8"};
+  var SYM  = {available:"available",booked:"booked",unset:""};
+  var BDR  = {available:"#86efac",booked:"#fca5a5",unset:"#e2e8f0"};
+  var BDR2 = {available:"#16a34a",booked:"#dc2626",unset:"#93c5fd"};
+  var grid = $("calGrid"); grid.innerHTML = "";
+  for (var i = 0; i < days.length; i++) {
+    (function(date) {
+      var k=dateKey(date), s=avail[k]||"unset", isT=k===tk;
+      var div=document.createElement("div"); div.className="cell";
+      div.style.background=BG[s];
+      div.style.border=isT?"2px solid "+BDR2[s]:"1px solid "+BDR[s];
+      if (editMode) div.classList.add("editable");
+      var n=document.createElement("div"); n.className="cell-num";
+      n.style.color=TXT[s]; n.style.fontWeight=isT?"700":"400";
+      n.textContent=String(date.getDate()); div.appendChild(n);
+      var m=document.createElement("div"); m.className="cell-mon";
+      m.style.color=TXT[s]; m.textContent=MONTHS[date.getMonth()]; div.appendChild(m);
+      if (SYM[s]) {
+        var sym=document.createElement("div"); sym.className="cell-sym";
+        sym.style.color=TXT[s]; sym.textContent=SYM[s]; div.appendChild(sym);
+      }
+      div.onclick=function() {
+        if (!editMode) return;
+        var cur=avail[k]||"unset";
+        var next=cur==="unset"?"available":cur==="available"?"booked":"unset";
+        if (next==="unset") { delete avail[k]; } else { avail[k]=next; }
+        renderCalendar(); saveToCloud();
+      };
+      grid.appendChild(div);
+    })(days[i]);
+  }
+}
+window.switchTab=function(t) {
+  var tabs=["calendar","about","tuition"];
+  for (var i=0;i<tabs.length;i++) {
+    $("view-"+tabs[i]).style.display=tabs[i]===t?"":"none";
+    $("tab-"+tabs[i]).classList.toggle("active",tabs[i]===t);
+  }
+  window.scrollTo(0,0);
+};
+window.goContact=function() {
+  var el=$("tuition-contact");
+  if (el) el.scrollIntoView({behavior:"smooth",block:"center"});
+};
+window.toggleEdit=function() {
+  if (editMode) {
+    editMode=false; $("editBtn").textContent="Edit";
+    $("editBar").classList.remove("show"); renderCalendar();
+  } else {
+    pinInput=""; updateDots(); $("pinErr").innerHTML="&nbsp;";
+    $("pinOverlay").classList.add("show");
+  }
+};
+window.closePinSheet=function() {
+  $("pinOverlay").classList.remove("show"); pinInput=""; updateDots();
+};
+window.pinDigit=function(d) {
+  if (pinInput.length>=4) return; pinInput+=d; updateDots();
+  if (pinInput.length===4) checkPin();
+};
+window.pinDel=function() { pinInput=pinInput.slice(0,-1); updateDots(); };
+function updateDots(err) {
+  for (var i=0;i<4;i++) {
+    var el=$("d"+i); el.className="pin-dot";
+    if (err) el.classList.add("error"); else if (i<pinInput.length) el.classList.add("filled");
+  }
+}
+function enterEditMode() {
+  editMode=true;
+  $("editBtn").textContent="Done";
+  $("editBar").classList.add("show");
+  renderCalendar();
+}
+function checkPin() {
+  if (pinInput===PIN) {
+    closePinSheet();
+    enterEditMode();
+  } else {
+    updateDots(true);
+    $("pinErr").textContent="Incorrect PIN — try again";
+    setTimeout(function() { pinInput=""; updateDots(); $("pinErr").innerHTML="&nbsp;"; },700);
+  }
+}
+
+// Reuse the header photo on the About tab (avoids embedding the image twice)
+$("aboutAvatar").src = $("headerAvatar").src;
+
+avail=fromCache(); renderCalendar(); loadFromCloud();
+</script>
 </body>
 </html>

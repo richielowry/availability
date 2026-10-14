@@ -1,9 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-IE">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Karen Lowry — Substitute &amp; Home Tuition Teacher</title>
+<title>Karen Lowry | Primary Teacher: Substitute Cover &amp; Home School Tuition, Kilkenny</title>
+<meta name="description" content="Registered primary teacher in Kilkenny available for substitute teaching and one-to-one home school tuition, including children with autism and additional needs. French and German teaching also available.">
+<meta name="theme-color" content="#1e3a8a">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Karen Lowry | Substitute Teacher &amp; Home School Tuition, Kilkenny">
+<meta property="og:description" content="Registered primary teacher available for substitute cover and one-to-one home tuition in Kilkenny City and surrounding areas.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8D%8E%3C/text%3E%3C/svg%3E">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{height:100%;-webkit-tap-highlight-color:transparent}
@@ -22,7 +28,7 @@ body{font-family:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sa
 .edit-bar{background:#fefce8;border-bottom:1px solid #fde047;padding:7px 14px;font-size:12px;color:#854d0e;display:none;align-items:center;gap:6px;flex-shrink:0}
 .edit-bar.show{display:flex}
 .tabs{display:flex;border-bottom:1px solid #f1f5f9;flex-shrink:0}
-.tab-btn{flex:1;padding:12px 2px;border:none;background:none;font-size:13px;font-weight:500;cursor:pointer;font-family:inherit;color:#94a3b8;border-bottom:2px solid transparent;transition:color .15s}
+.tab-btn{flex:1;padding:12px 1px;border:none;background:none;font-size:12px;line-height:1.25;font-weight:500;cursor:pointer;font-family:inherit;color:#94a3b8;border-bottom:2px solid transparent;transition:color .15s}
 .tab-btn.active{color:#1e3a8a;border-bottom:2px solid #1e3a8a}
 .cal-wrap{padding:14px;flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch}
 .summary{display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap}
@@ -107,6 +113,48 @@ details.qa[open]>summary::after{content:"\2212"}
 .num-btn.del{font-size:14px;color:#64748b;font-weight:500}
 .num-btn.empty{background:transparent;cursor:default;pointer-events:none}
 
+/* ===== Services strip, friendly accents, new tab styles ===== */
+.header::after{content:"";position:absolute;left:0;right:0;bottom:0;height:4px;background:linear-gradient(90deg,#fbbf24,#fb7185,#34d399,#60a5fa)}
+.header-name,.about-name,.t-hero h2,.offer-title,.faq-inner .t-hero h2{font-family:ui-rounded,"SF Pro Rounded","Nunito","Quicksand",system-ui,-apple-system,"Segoe UI",sans-serif}
+.header-tag{font-size:12px;font-weight:600;color:#fde68a;margin-top:3px}
+.svc-strip{background:#fffbeb;border-bottom:1px solid #fde68a;padding:9px 14px 10px;flex-shrink:0}
+.svc-label{font-size:11px;font-weight:600;color:#92400e;text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px;text-align:center}
+.svc-pills{display:flex;gap:8px}
+.svc-pill{flex:1;border:1.5px solid #bfdbfe;background:#eff6ff;color:#1e3a8a;border-radius:999px;padding:8px 6px;font-size:13px;font-weight:600;font-family:inherit;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;line-height:1.2;transition:transform .1s,box-shadow .15s}
+.svc-pill.tut{border-color:#fde68a;background:#fff;color:#92400e}
+.svc-pill.active{box-shadow:0 0 0 2px #1e3a8a inset}
+.svc-pill:active{transform:scale(.97)}
+.offer{display:flex;flex-direction:column;gap:9px;margin-bottom:12px}
+.offer-head{font-size:11px;font-weight:600;color:#475569;text-transform:uppercase;letter-spacing:.05em;text-align:center}
+.offer-card{display:flex;gap:11px;align-items:flex-start;text-align:left;width:100%;border:1.5px solid #bfdbfe;background:#eff6ff;border-radius:14px;padding:12px 13px;font-family:inherit;cursor:pointer;color:#0f172a}
+.offer-card.tut{border-color:#fde68a;background:#fffbeb}
+.offer-ico{width:38px;height:38px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;box-shadow:0 1px 3px rgba(15,23,42,.1)}
+.offer-title{font-size:15px;font-weight:700;color:#1e3a8a;margin-bottom:2px}
+.offer-card.tut .offer-title{color:#92400e}
+.offer-text{font-size:12.5px;color:#475569;line-height:1.5}
+.offer-more{display:inline-block;margin-top:4px;font-size:12px;font-weight:600;color:#1e3a8a}
+.offer-both{font-size:12.5px;color:#475569;text-align:center;line-height:1.5}
+.t-hero.warm{background:#fffbeb}
+.t-hero .also{font-size:13px;margin:12px 0 0;color:#64748b}
+.t-hero .also a{color:#1e3a8a;font-weight:600}
+.t-card{border-left:4px solid #93c5fd}
+.t-card:nth-child(4n+3){border-left-color:#fcd34d}
+.t-card:nth-child(4n+4){border-left-color:#86efac}
+.t-card:nth-child(4n+5){border-left-color:#fda4af}
+.step:nth-child(4n+3) .step-num{background:#b45309}
+.step:nth-child(4n+4) .step-num{background:#047857}
+.step:nth-child(4n+5) .step-num{background:#be123c}
+.lang-flags{display:flex;gap:8px;margin:0 0 10px;flex-wrap:wrap}
+.lang-chip{background:#fff;border:1.5px solid #fde68a;color:#92400e;border-radius:999px;padding:4px 12px;font-size:13px;font-weight:600}
+.both-banner{background:#eff6ff;border:1.5px solid #bfdbfe;border-radius:14px;padding:16px;margin-top:4px;text-align:center;font-size:14px;color:#334155;line-height:1.55}
+.both-banner.tut{background:#fffbeb;border-color:#fde68a}
+.both-banner .t-btn{margin-top:10px}
+.site-footer{margin-top:auto;border-top:1px solid #f1f5f9;background:#f8fafc;padding:16px 16px 20px;text-align:center;font-size:12px;color:#64748b;line-height:1.6}
+.quickbar{position:fixed;left:50%;bottom:0;transform:translateX(-50%);width:100%;max-width:480px;display:flex;gap:8px;padding:10px 12px calc(10px + env(safe-area-inset-bottom));background:rgba(255,255,255,.96);border-top:1px solid #e2e8f0;z-index:50}
+.qb{flex:1;text-align:center;padding:11px 6px;border-radius:12px;font-weight:600;font-size:14px;text-decoration:none;color:#fff;background:#1e3a8a}
+.qb.wa{background:#16a34a}
+@media (max-width:859px){.site-footer{padding-bottom:78px}}
+
 /* ===== Desktop / large screens (phones keep the layout above) ===== */
 @media (min-width:860px){
   html{background:#f1f5f9}
@@ -159,17 +207,17 @@ details.qa[open]>summary::after{content:"\2212"}
   .qual-dot{margin-top:9px}
 
   /* Home School Tuition: hero across the top, two columns below */
-  #view-tuition{display:grid;grid-template-columns:1fr 1fr;column-gap:24px;align-content:start;padding:40px}
+  .t-view{display:grid;grid-template-columns:1fr 1fr;column-gap:24px;align-content:start;padding:40px}
   .t-hero{grid-column:1 / -1;padding:36px 40px;border-radius:18px;margin-bottom:24px}
   .t-hero h2{font-size:32px;max-width:640px;line-height:1.2}
   .t-hero p{font-size:17px;max-width:620px}
   .t-btn{padding:13px 28px;font-size:15px;transition:background .15s}
   .t-btn:hover{background:#172e6e}
-  #view-tuition .section{padding:22px 24px;border-radius:14px}
+  .t-view .section{padding:22px 24px;border-radius:14px}
   .t-card h4,.step h4{font-size:15px}
   .t-card p,.step p{font-size:14px}
-  #view-tuition .cal-contact{margin-top:6px;justify-content:flex-start}
-  #view-tuition .cal-contact .contact-card{max-width:none;width:100%}
+  .t-view .cal-contact{margin-top:6px;justify-content:flex-start}
+  .t-view .cal-contact .contact-card{max-width:none;width:100%}
 
   /* FAQs */
   #view-faq{padding:40px}
@@ -179,6 +227,22 @@ details.qa[open]>summary::after{content:"\2212"}
   .faq-inner .t-hero{padding:30px 34px}
   .faq-inner .t-hero h2{font-size:28px}
   .faq-note{font-size:13.5px}
+
+  /* Services strip, header tagline, new tab */
+  .header-tag{font-size:15px;margin-top:5px}
+  .svc-strip{display:flex;align-items:center;justify-content:center;gap:16px;padding:12px 40px}
+  .svc-label{margin:0}
+  .svc-pills{gap:12px}
+  .svc-pill{flex:none;padding:9px 22px;font-size:14px}
+  .svc-pill:hover{transform:translateY(-1px);box-shadow:0 3px 10px rgba(30,58,138,.15)}
+  .offer-card{transition:transform .12s,box-shadow .15s}
+  .offer-card:hover{transform:translateY(-2px);box-shadow:0 6px 16px rgba(15,23,42,.1)}
+  .offer-title{font-size:16px}
+  .offer-text{font-size:13.5px}
+  .t-view .section.wide,.t-view .both-banner{grid-column:1 / -1}
+  .t-hero.warm h2{max-width:640px}
+  .site-footer{padding:22px 40px;font-size:13px}
+  .quickbar{display:none}
 
   /* PIN pad: centred dialog instead of a bottom sheet */
   .overlay{position:fixed;align-items:center;justify-content:center}
@@ -194,7 +258,8 @@ details.qa[open]>summary::after{content:"\2212"}
       <img class="header-avatar" id="headerAvatar" src="data:image/png;base64,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" alt="Karen Lowry">
       <div>
         <div class="header-name">Múinteoir Karen Lowry</div>
-        <div class="header-title">Primary School Substitute &amp; Home School Tuition Teacher</div>
+        <div class="header-title">Registered Primary Teacher</div>
+        <div class="header-tag">Substitute Teaching &amp; Home School Tuition</div>
       </div>
     </div>
     <div class="sync-dot" id="syncDot"></div>
@@ -202,9 +267,18 @@ details.qa[open]>summary::after{content:"\2212"}
   </div>
   <div class="edit-bar" id="editBar">&#9999; Edit mode &#8212; tap any weekday to update your availability</div>
 
+  <div class="svc-strip">
+    <div class="svc-label">Available for</div>
+    <div class="svc-pills">
+      <button class="svc-pill" id="pill-sub" onclick="switchTab('sub')"><span>&#127823;</span> Substitute Teaching</button>
+      <button class="svc-pill tut" id="pill-tuition" onclick="switchTab('tuition')"><span>&#127968;</span> Home School Tuition</button>
+    </div>
+  </div>
+
   <div class="tabs">
-    <button class="tab-btn active" id="tab-calendar" onclick="switchTab('calendar')">Calendar</button>
+    <button class="tab-btn active" id="tab-calendar" onclick="switchTab('calendar')">Availability</button>
     <button class="tab-btn" id="tab-about" onclick="switchTab('about')">About Me</button>
+    <button class="tab-btn" id="tab-sub" onclick="switchTab('sub')">Substitute Teacher</button>
     <button class="tab-btn" id="tab-tuition" onclick="switchTab('tuition')">Home School Tuition</button>
     <button class="tab-btn" id="tab-faq" onclick="switchTab('faq')">FAQs</button>
   </div>
@@ -249,8 +323,20 @@ details.qa[open]>summary::after{content:"\2212"}
     <div class="about-side">
     <img id="aboutAvatar" alt="Karen Lowry" style="width:68px;height:68px;border-radius:50%;object-fit:cover;object-position:top;display:block;margin:0 auto 10px;border:2px solid #dbeafe">
     <div class="about-name">Múinteoir Karen Lowry</div>
-    <div class="about-sub">Primary School Substitute &amp; Home School Tuition Teacher</div>
+    <div class="about-sub">Registered Primary Teacher</div>
     <div class="about-loc">Kilkenny City &amp; Surrounding Areas</div>
+    <div class="offer">
+      <div class="offer-head">I am available for</div>
+      <button class="offer-card" onclick="switchTab('sub')">
+        <div class="offer-ico">&#127823;</div>
+        <div><div class="offer-title">Substitute Teaching</div><div class="offer-text">Reliable, well-prepared day-to-day and short-term cover in primary schools across Kilkenny City and the surrounding areas. I can also teach French and German.</div><span class="offer-more">See substitute details &rsaquo;</span></div>
+      </button>
+      <button class="offer-card tut" onclick="switchTab('tuition')">
+        <div class="offer-ico">&#127968;</div>
+        <div><div class="offer-title">Home School Tuition</div><div class="offer-text">Calm, one-to-one tuition in your own home for early years and primary children, including children on the autism spectrum or with additional learning needs.</div><span class="offer-more">See tuition details &rsaquo;</span></div>
+      </button>
+      <div class="offer-both">Both are equally important to me, and I would be delighted to help in either way.</div>
+    </div>
     <div class="about-contact">
       <div class="contact-card">
         <a class="contact-row" href="tel:0876122597">
@@ -279,7 +365,7 @@ details.qa[open]>summary::after{content:"\2212"}
     <div class="about-main">
     <div class="section">
       <div class="section-title">About</div>
-      <p class="section-body">A motivated and enthusiastic newly qualified primary school teacher with classroom experience across a range of class levels, including a special education setting. Brings excellent communication, organisational and interpersonal skills, alongside ten years’ leadership experience in a professional setting. Committed to creating a positive, inclusive and engaging learning environment where every child can thrive.</p>
+      <p class="section-body">A motivated and enthusiastic newly qualified primary school teacher with classroom experience across a range of class levels, including a special education setting. Brings excellent communication, organisational and interpersonal skills, alongside ten years’ leadership experience in a professional setting. Committed to creating a positive, inclusive and engaging learning environment where every child can thrive. I am actively seeking both substitute teaching and home school tuition work.</p>
       <p class="section-body" style="margin-top:10px">I have a real passion for one-to-one learning. When a child has a teacher&rsquo;s full attention in a calm, familiar setting, they can learn at their own pace and begin to believe in themselves.</p>
       <p class="section-body" style="margin-top:10px">That is why I also offer Home School Tuition: tailored 121 support in your own home for early years and primary school children, including children on the autism spectrum and those with additional learning needs. Each child gets a plan built around their strengths and interests. <a href="#" onclick="switchTab('tuition');return false;" style="color:#1e3a8a;font-weight:500">Find out more</a>.</p>
     </div>
@@ -287,6 +373,7 @@ details.qa[open]>summary::after{content:"\2212"}
       <div class="section-title">Qualifications</div>
       <div class="qual-row"><div class="qual-dot"></div>PME in Primary Education (2.2 Honours Degree) - Hibernia College - 2024-2026</div>
       <div class="qual-row"><div class="qual-dot"></div>B.A. in International Marketing &amp; Languages - French/German (2.1 Honours Degree) - Dublin City University - 2003-2006</div>
+      <div class="qual-row"><div class="qual-dot" style="background:#f59e0b"></div><span><b>French &amp; German:</b> I can teach both languages to children.</span></div>
     </div>
     <div class="section">
       <div class="section-title">Teaching Council Registration</div>
@@ -295,11 +382,80 @@ details.qa[open]>summary::after{content:"\2212"}
     </div>
   </div>
 
-  <div class="about-wrap" id="view-tuition" style="display:none">
+  <div class="about-wrap t-view" id="view-sub" style="display:none">
     <div class="t-hero">
+      <h2>Available for substitute teaching in Kilkenny City &amp; surrounding areas</h2>
+      <p>I am a registered primary teacher offering reliable, well-prepared cover for short-term and day-to-day absences. I bring warmth, structure and a real love of teaching, including French and German.</p>
+      <button class="t-btn" onclick="switchTab('calendar')">Check my availability</button> <button class="t-btn ghost" onclick="goContact('sub-contact')">Get in touch</button>
+      <p class="also">I also offer <a href="#" onclick="switchTab('tuition');return false;">home school tuition</a>.</p>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Why choose me</div>
+      <div class="t-card"><h4>Registered &amp; vetted</h4><p>Teaching Council Reg. No. 343874 (Route 1) and Garda vetted.</p></div>
+      <div class="t-card"><h4>Classroom experience</h4><p>Experience across a range of class levels, including a special education setting.</p></div>
+      <div class="t-card"><h4>Professional &amp; dependable</h4><p>Ten years&rsquo; leadership experience in a professional setting, with strong communication and organisational skills.</p></div>
+      <div class="t-card" style="margin-bottom:0"><h4>Positive &amp; inclusive</h4><p>A welcoming, engaging classroom where every child can thrive.</p></div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">French &amp; German</div>
+      <div class="lang-flags"><span class="lang-chip">Fran&ccedil;ais</span><span class="lang-chip">Deutsch</span></div>
+      <p class="section-body">I hold a B.A. in International Marketing &amp; Languages (French/German, 2.1 Honours) from Dublin City University, and I can teach both languages to children.</p>
+      <p class="section-body" style="margin-top:8px">If it suits your class, I am happy to bring simple, fun language activities when I am covering, such as greetings, songs, games and everyday vocabulary.</p>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Qualifications</div>
+      <div class="qual-row"><div class="qual-dot"></div>PME in Primary Education (2.2 Honours Degree) - Hibernia College - 2024-2026</div>
+      <div class="qual-row"><div class="qual-dot"></div>B.A. in International Marketing &amp; Languages - French/German (2.1 Honours Degree) - Dublin City University - 2003-2006</div>
+      <div class="qual-row"><div class="qual-dot"></div>Teaching Council Registration No. 343874 (Route 1)</div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">How cover works</div>
+      <div class="step"><div class="step-num">1</div><div><h4>Check my availability</h4><p>My live calendar shows which days I am free to cover.</p></div></div>
+      <div class="step"><div class="step-num">2</div><div><h4>Get in touch</h4><p>Phone, WhatsApp or email me. For short notice, phone or WhatsApp is quickest.</p></div></div>
+      <div class="step"><div class="step-num">3</div><div><h4>I confirm promptly</h4><p>I will confirm as soon as I can so you can plan your day.</p></div></div>
+      <div class="step" style="margin-bottom:0"><div class="step-num">4</div><div><h4>A note for the class teacher</h4><p>I leave a short summary of the day for the class teacher.</p></div></div>
+    </div>
+
+    <div class="section wide">
+      <div class="section-title">Get in touch</div>
+      <p class="section-body" style="margin-bottom:10px">Need cover for a day or longer? Please contact me directly. Serving primary schools in Kilkenny City and the surrounding areas.</p>
+      <div class="cal-contact" id="sub-contact">
+      <div class="contact-card">
+        <a class="contact-row" href="tel:0876122597">
+          <div class="c-icon c-icon-g"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#15803d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.62 3.38a2 2 0 0 1 2-1.87h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+          <div><div class="c-label">087 612 2597</div><div class="c-hint">Tap to call</div></div>
+          <div class="c-arr">&#8250;</div>
+        </a>
+        <a class="contact-row" href="mailto:karen.lowry80@gmail.com">
+          <div class="c-icon c-icon-b"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+          <div><div class="c-label">karen.lowry80@gmail.com</div><div class="c-hint">Tap to email</div></div>
+          <div class="c-arr">&#8250;</div>
+        </a>
+        <a class="contact-row" href="https://wa.me/353876122597">
+          <div class="c-icon c-icon-w"><svg width="16" height="16" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></div>
+          <div><div class="c-label">WhatsApp</div><div class="c-hint">Tap to message</div></div>
+          <div class="c-arr">&#8250;</div>
+        </a>
+      </div>
+    </div>
+    </div>
+
+    <div class="both-banner tut">
+      <b>Do you know a family who needs a tutor?</b><br>I also offer one-to-one home school tuition for early years and primary children.<br>
+      <button class="t-btn" onclick="switchTab('tuition')">See home school tuition</button>
+    </div>
+  </div>
+
+  <div class="about-wrap t-view" id="view-tuition" style="display:none">
+    <div class="t-hero warm">
       <h2>Calm, patient one-to-one tuition in your own home</h2>
       <p>Specialised home school tuition for early years and primary school children, including children on the autism spectrum, planned around your child&rsquo;s strengths, interests and pace.</p>
       <button class="t-btn" onclick="goContact()">Get in touch</button> <button class="t-btn ghost" onclick="switchTab('faq')">FAQs</button>
+      <p class="also">I am also available for <a href="#" onclick="switchTab('sub');return false;">substitute teaching</a>.</p>
     </div>
 
     <div class="section">
@@ -349,7 +505,12 @@ details.qa[open]>summary::after{content:"\2212"}
       </div>
     </div>
     </div>
+    <div class="both-banner">
+      <b>Does your school need cover?</b><br>I am also available for substitute teaching in primary schools, and I can teach French and German.<br>
+      <button class="t-btn" onclick="switchTab('sub')">See substitute teaching</button>
+    </div>
   </div>
+
 
   <div class="about-wrap" id="view-faq" style="display:none">
     <div class="faq-inner">
@@ -360,7 +521,9 @@ details.qa[open]>summary::after{content:"\2212"}
 
     <div class="faq-group">
     <div class="section-title">For principals</div>
-<details class="qa"><summary>Are you available for substitute cover?</summary><div class="qa-a">Yes. I am available for substitute and short-term cover in primary schools in Kilkenny City and the surrounding areas. The <a href="#" onclick="switchTab('calendar');return false;">Calendar tab</a> shows my availability. For short-notice cover, please phone or WhatsApp me on 087 612 2597.</div></details>
+<details class="qa" open><summary>What are you looking for?</summary><div class="qa-a">Both. I am available for substitute teaching in primary schools, and I offer one-to-one home school tuition for early years and primary children. Both are equally important to me. See the <a href="#" onclick="switchTab('sub');return false;">Substitute Teacher</a> and <a href="#" onclick="switchTab('tuition');return false;">Home School Tuition</a> tabs.</div></details>
+<details class="qa"><summary>Can you teach French or German?</summary><div class="qa-a">Yes. I hold a B.A. in International Marketing &amp; Languages (French/German, 2.1 Honours) from Dublin City University and can teach both languages to children.</div></details>
+<details class="qa"><summary>Are you available for substitute cover?</summary><div class="qa-a">Yes. I am available for substitute and short-term cover in primary schools in Kilkenny City and the surrounding areas. The <a href="#" onclick="switchTab('calendar');return false;">Availability tab</a> shows my availability. For short-notice cover, please phone or WhatsApp me on 087 612 2597.</div></details>
 <details class="qa"><summary>Are you registered with the Teaching Council?</summary><div class="qa-a">Yes. My registration number is 343874 (Route 1), and I am Garda vetted. References and a CV are available on request.</div></details>
 <details class="qa"><summary>What is your classroom experience?</summary><div class="qa-a">I have classroom experience across a range of class levels, including a special education setting. See the <a href="#" onclick="switchTab('about');return false;">About Me tab</a> for my qualifications.</div></details>
 <details class="qa"><summary>Can you pass on details of home tuition to families?</summary><div class="qa-a">I would be very grateful if you would. If a family in your school community may benefit from one-to-one tuition at home, they are welcome to contact me directly or visit the <a href="#" onclick="switchTab('tuition');return false;">Home School Tuition tab</a>.</div></details>
@@ -445,6 +608,9 @@ details.qa[open]>summary::after{content:"\2212"}
     </div>
     </div>
   </div>
+
+  <div class="site-footer">&copy; <span id="yr"></span> Karen Lowry &middot; Registered Primary Teacher &middot; Teaching Council Reg. No. 343874<br>Substitute Teaching &amp; Home School Tuition &middot; Kilkenny City &amp; surrounding areas</div>
+  <div class="quickbar"><a class="qb" href="tel:0876122597">Call</a><a class="qb wa" href="https://wa.me/353876122597">WhatsApp</a></div>
 
   <div class="overlay" id="pinOverlay" onclick="if(event.target===this)closePinSheet()">
     <div class="pin-sheet">
@@ -586,15 +752,17 @@ function renderCalendar() {
   }
 }
 window.switchTab=function(t) {
-  var tabs=["calendar","about","tuition","faq"];
+  var tabs=["calendar","about","sub","tuition","faq"];
   for (var i=0;i<tabs.length;i++) {
     $("view-"+tabs[i]).style.display=tabs[i]===t?"":"none";
     $("tab-"+tabs[i]).classList.toggle("active",tabs[i]===t);
   }
+  $("pill-sub").classList.toggle("active",t==="sub");
+  $("pill-tuition").classList.toggle("active",t==="tuition");
   window.scrollTo(0,0);
 };
-window.goContact=function() {
-  var el=$("tuition-contact");
+window.goContact=function(id) {
+  var el=$(id||"tuition-contact");
   if (el) el.scrollIntoView({behavior:"smooth",block:"center"});
 };
 window.toggleEdit=function() {
@@ -640,6 +808,7 @@ function checkPin() {
 // Reuse the header photo on the About tab (avoids embedding the image twice)
 $("aboutAvatar").src = $("headerAvatar").src;
 
+$("yr").textContent=new Date().getFullYear();
 avail=fromCache(); renderCalendar(); loadFromCloud();
 </script>
 </body>

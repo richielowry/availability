@@ -57,6 +57,7 @@ body{font-family:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sa
 .c-hint{font-size:11px;color:#94a3b8}
 .c-arr{margin-left:auto;color:#e2e8f0;font-size:18px;font-weight:300}
 .cal-contact{margin-top:16px;display:flex;justify-content:center}
+.cal-note{font-size:13px;color:#475569;background:#fffbeb;border:1px solid #fde68a;border-radius:12px;padding:10px 13px;margin-top:14px;line-height:1.55}
 .cal-contact .contact-card{width:100%;max-width:360px}
 .about-wrap{padding:20px 16px;flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch}
 .avatar{width:68px;height:68px;border-radius:50%;background:#dbeafe;color:#1e3a8a;display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:600;margin:0 auto 10px}
@@ -187,7 +188,8 @@ details.qa[open]>summary::after{content:"\2212"}
   .cell.editable:hover{transform:translateY(-2px);box-shadow:0 4px 12px rgba(15,23,42,.12)}
   .legend{margin-top:18px;justify-content:flex-start;gap:20px}
   .leg-item{font-size:13px}
-  .cal-contact{grid-column:2;grid-row:1 / span 4;margin-top:0;align-self:start;justify-content:stretch}
+  .cal-note{grid-column:1;font-size:14px}
+  .cal-contact{grid-column:2;grid-row:1 / span 5;margin-top:0;align-self:start;justify-content:stretch}
   .cal-contact .contact-card{max-width:none}
   .contact-row{transition:background .15s}
   .contact-row:hover{background:#eff6ff}
@@ -276,14 +278,14 @@ details.qa[open]>summary::after{content:"\2212"}
   </div>
 
   <div class="tabs">
-    <button class="tab-btn active" id="tab-calendar" onclick="switchTab('calendar')">Availability</button>
-    <button class="tab-btn" id="tab-about" onclick="switchTab('about')">About Me</button>
+    <button class="tab-btn active" id="tab-about" onclick="switchTab('about')">Home</button>
     <button class="tab-btn" id="tab-sub" onclick="switchTab('sub')">Substitute Teacher</button>
     <button class="tab-btn" id="tab-tuition" onclick="switchTab('tuition')">Home School Tuition</button>
+    <button class="tab-btn" id="tab-calendar" onclick="switchTab('calendar')">Availability</button>
     <button class="tab-btn" id="tab-faq" onclick="switchTab('faq')">FAQs</button>
   </div>
 
-  <div class="cal-wrap" id="view-calendar">
+  <div class="cal-wrap" id="view-calendar" style="display:none">
     <div class="summary" id="summary"></div>
     <div class="col-headers">
       <div class="col-hdr">Mon</div>
@@ -298,6 +300,7 @@ details.qa[open]>summary::after{content:"\2212"}
       <div class="leg-item"><div class="leg-swatch" style="background:#fee2e2;border:1px solid #fca5a5"></div><span style="color:#b91c1c">Booked</span></div>
       <div class="leg-item"><div class="leg-swatch" style="background:#f1f5f9;border:1px solid #e2e8f0"></div><span style="color:#94a3b8">Not set</span></div>
     </div>
+    <p class="cal-note">Days that are not marked may still be available, so please get in touch to check. For short-notice cover, phone or WhatsApp is quickest.</p>
     <div class="cal-contact">
       <div class="contact-card">
         <a class="contact-row" href="tel:0876122597">
@@ -319,7 +322,7 @@ details.qa[open]>summary::after{content:"\2212"}
     </div>
   </div>
 
-  <div class="about-wrap" id="view-about" style="display:none">
+  <div class="about-wrap" id="view-about">
     <div class="about-side">
     <img id="aboutAvatar" alt="Karen Lowry" style="width:68px;height:68px;border-radius:50%;object-fit:cover;object-position:top;display:block;margin:0 auto 10px;border:2px solid #dbeafe">
     <div class="about-name">Múinteoir Karen Lowry</div>
@@ -336,6 +339,7 @@ details.qa[open]>summary::after{content:"\2212"}
         <div><div class="offer-title">Home School Tuition</div><div class="offer-text">Calm, one-to-one tuition in your own home for early years and primary children, including children on the autism spectrum or with additional learning needs.</div><span class="offer-more">See tuition details &rsaquo;</span></div>
       </button>
       <div class="offer-both">Both are equally important to me, and I would be delighted to help in either way.</div>
+      <button class="t-btn ghost" style="margin:2px auto 0" onclick="switchTab('calendar')">Check my availability</button>
     </div>
     <div class="about-contact">
       <div class="contact-card">
@@ -525,7 +529,7 @@ details.qa[open]>summary::after{content:"\2212"}
 <details class="qa"><summary>Can you teach French or German?</summary><div class="qa-a">Yes. I hold a B.A. in International Marketing &amp; Languages (French/German, 2.1 Honours) from Dublin City University and can teach both languages to children.</div></details>
 <details class="qa"><summary>Are you available for substitute cover?</summary><div class="qa-a">Yes. I am available for substitute and short-term cover in primary schools in Kilkenny City and the surrounding areas. The <a href="#" onclick="switchTab('calendar');return false;">Availability tab</a> shows my availability. For short-notice cover, please phone or WhatsApp me on 087 612 2597.</div></details>
 <details class="qa"><summary>Are you registered with the Teaching Council?</summary><div class="qa-a">Yes. My registration number is 343874 (Route 1), and I am Garda vetted. References and a CV are available on request.</div></details>
-<details class="qa"><summary>What is your classroom experience?</summary><div class="qa-a">I have classroom experience across a range of class levels, including a special education setting. See the <a href="#" onclick="switchTab('about');return false;">About Me tab</a> for my qualifications.</div></details>
+<details class="qa"><summary>What is your classroom experience?</summary><div class="qa-a">I have classroom experience across a range of class levels, including a special education setting. See the <a href="#" onclick="switchTab('about');return false;">Home tab</a> for my qualifications.</div></details>
 <details class="qa"><summary>Can you pass on details of home tuition to families?</summary><div class="qa-a">I would be very grateful if you would. If a family in your school community may benefit from one-to-one tuition at home, they are welcome to contact me directly or visit the <a href="#" onclick="switchTab('tuition');return false;">Home School Tuition tab</a>.</div></details>
     </div>
 
@@ -751,14 +755,17 @@ function renderCalendar() {
     })(days[i]);
   }
 }
+var TAB_HASH={about:"home",sub:"substitute",tuition:"tuition",calendar:"availability",faq:"faqs"};
+var HASH_TAB={home:"about",about:"about",substitute:"sub",sub:"sub",tuition:"tuition",availability:"calendar",calendar:"calendar",faqs:"faq",faq:"faq"};
 window.switchTab=function(t) {
-  var tabs=["calendar","about","sub","tuition","faq"];
+  var tabs=["about","sub","tuition","calendar","faq"];
   for (var i=0;i<tabs.length;i++) {
     $("view-"+tabs[i]).style.display=tabs[i]===t?"":"none";
     $("tab-"+tabs[i]).classList.toggle("active",tabs[i]===t);
   }
   $("pill-sub").classList.toggle("active",t==="sub");
   $("pill-tuition").classList.toggle("active",t==="tuition");
+  try { history.replaceState(null,"","#"+TAB_HASH[t]); } catch(e) {}
   window.scrollTo(0,0);
 };
 window.goContact=function(id) {
@@ -789,6 +796,7 @@ function updateDots(err) {
   }
 }
 function enterEditMode() {
+  switchTab("calendar");
   editMode=true;
   $("editBtn").textContent="Done";
   $("editBar").classList.add("show");
@@ -809,6 +817,7 @@ function checkPin() {
 $("aboutAvatar").src = $("headerAvatar").src;
 
 $("yr").textContent=new Date().getFullYear();
+(function(){ var h=(location.hash||"").replace("#","").toLowerCase(); if (HASH_TAB[h]) switchTab(HASH_TAB[h]); })();
 avail=fromCache(); renderCalendar(); loadFromCloud();
 </script>
 </body>
